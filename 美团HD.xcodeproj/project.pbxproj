@@ -39,6 +39,18 @@
 		7D24129B1BECA2E4007AA2F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412801BECA2E4007AA2F4 /* AppDelegate.m */; };
 		7D24129D1BECA2E4007AA2F4 /* MTConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412831BECA2E4007AA2F4 /* MTConst.m */; };
 		7D2412BC1BECA5D2007AA2F4 /* MTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412BB1BECA5D2007AA2F4 /* MTHomeViewController.m */; };
+		7D2412C01BECA969007AA2F4 /* MTHomeTopItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412BE1BECA969007AA2F4 /* MTHomeTopItem.m */; };
+		7D2412C11BECA969007AA2F4 /* MTHomeTopItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D2412BF1BECA969007AA2F4 /* MTHomeTopItem.xib */; };
+		7D2412C41BECACD2007AA2F4 /* MTCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412C31BECACD2007AA2F4 /* MTCategoryViewController.m */; };
+		7D2412C71BECAD50007AA2F4 /* MTHomeDropdownMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412C61BECAD50007AA2F4 /* MTHomeDropdownMainCell.m */; };
+		7D2412CA1BECAE25007AA2F4 /* MTHomeDropdownSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412C91BECAE25007AA2F4 /* MTHomeDropdownSubCell.m */; };
+		7D2412D21BECB06B007AA2F4 /* MTCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412D11BECB06B007AA2F4 /* MTCategory.m */; };
+		7D7AC7CD1BECB19D00B52B30 /* MTHomeDropdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AC7CB1BECB19D00B52B30 /* MTHomeDropdown.m */; };
+		7D7AC7CE1BECB19D00B52B30 /* MTHomeDropdown.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7CC1BECB19D00B52B30 /* MTHomeDropdown.xib */; };
+		7D7AC7D41BECB39B00B52B30 /* categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D01BECB39A00B52B30 /* categories.plist */; };
+		7D7AC7D51BECB39B00B52B30 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D11BECB39A00B52B30 /* cities.plist */; };
+		7D7AC7D61BECB39B00B52B30 /* cityGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D21BECB39A00B52B30 /* cityGroups.plist */; };
+		7D7AC7D71BECB39B00B52B30 /* sorts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D31BECB39A00B52B30 /* sorts.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +141,24 @@
 		7D2412831BECA2E4007AA2F4 /* MTConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTConst.m; sourceTree = "<group>"; };
 		7D2412BA1BECA5D2007AA2F4 /* MTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeViewController.h; sourceTree = "<group>"; };
 		7D2412BB1BECA5D2007AA2F4 /* MTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeViewController.m; sourceTree = "<group>"; };
+		7D2412BD1BECA969007AA2F4 /* MTHomeTopItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeTopItem.h; sourceTree = "<group>"; };
+		7D2412BE1BECA969007AA2F4 /* MTHomeTopItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeTopItem.m; sourceTree = "<group>"; };
+		7D2412BF1BECA969007AA2F4 /* MTHomeTopItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTHomeTopItem.xib; sourceTree = "<group>"; };
+		7D2412C21BECACD2007AA2F4 /* MTCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCategoryViewController.h; sourceTree = "<group>"; };
+		7D2412C31BECACD2007AA2F4 /* MTCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCategoryViewController.m; sourceTree = "<group>"; };
+		7D2412C51BECAD50007AA2F4 /* MTHomeDropdownMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeDropdownMainCell.h; sourceTree = "<group>"; };
+		7D2412C61BECAD50007AA2F4 /* MTHomeDropdownMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdownMainCell.m; sourceTree = "<group>"; };
+		7D2412C81BECAE25007AA2F4 /* MTHomeDropdownSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeDropdownSubCell.h; sourceTree = "<group>"; };
+		7D2412C91BECAE25007AA2F4 /* MTHomeDropdownSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdownSubCell.m; sourceTree = "<group>"; };
+		7D2412D01BECB06B007AA2F4 /* MTCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCategory.h; sourceTree = "<group>"; };
+		7D2412D11BECB06B007AA2F4 /* MTCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCategory.m; sourceTree = "<group>"; };
+		7D7AC7CA1BECB19D00B52B30 /* MTHomeDropdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeDropdown.h; sourceTree = "<group>"; };
+		7D7AC7CB1BECB19D00B52B30 /* MTHomeDropdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdown.m; sourceTree = "<group>"; };
+		7D7AC7CC1BECB19D00B52B30 /* MTHomeDropdown.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTHomeDropdown.xib; sourceTree = "<group>"; };
+		7D7AC7D01BECB39A00B52B30 /* categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = categories.plist; sourceTree = "<group>"; };
+		7D7AC7D11BECB39A00B52B30 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
+		7D7AC7D21BECB39A00B52B30 /* cityGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityGroups.plist; sourceTree = "<group>"; };
+		7D7AC7D31BECB39A00B52B30 /* sorts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sorts.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +222,7 @@
 		7D24120E1BEC9D85007AA2F4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7D7AC7CF1BECB39A00B52B30 /* Plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -352,6 +383,8 @@
 			children = (
 				7D2412BA1BECA5D2007AA2F4 /* MTHomeViewController.h */,
 				7D2412BB1BECA5D2007AA2F4 /* MTHomeViewController.m */,
+				7D2412C21BECACD2007AA2F4 /* MTCategoryViewController.h */,
+				7D2412C31BECACD2007AA2F4 /* MTCategoryViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -359,6 +392,8 @@
 		7D2412A31BECA396007AA2F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7D2412D01BECB06B007AA2F4 /* MTCategory.h */,
+				7D2412D11BECB06B007AA2F4 /* MTCategory.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,8 +401,29 @@
 		7D2412A61BECA396007AA2F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7D2412BD1BECA969007AA2F4 /* MTHomeTopItem.h */,
+				7D2412BE1BECA969007AA2F4 /* MTHomeTopItem.m */,
+				7D2412BF1BECA969007AA2F4 /* MTHomeTopItem.xib */,
+				7D2412C51BECAD50007AA2F4 /* MTHomeDropdownMainCell.h */,
+				7D2412C61BECAD50007AA2F4 /* MTHomeDropdownMainCell.m */,
+				7D2412C81BECAE25007AA2F4 /* MTHomeDropdownSubCell.h */,
+				7D2412C91BECAE25007AA2F4 /* MTHomeDropdownSubCell.m */,
+				7D7AC7CA1BECB19D00B52B30 /* MTHomeDropdown.h */,
+				7D7AC7CB1BECB19D00B52B30 /* MTHomeDropdown.m */,
+				7D7AC7CC1BECB19D00B52B30 /* MTHomeDropdown.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7D7AC7CF1BECB39A00B52B30 /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				7D7AC7D01BECB39A00B52B30 /* categories.plist */,
+				7D7AC7D11BECB39A00B52B30 /* cities.plist */,
+				7D7AC7D21BECB39A00B52B30 /* cityGroups.plist */,
+				7D7AC7D31BECB39A00B52B30 /* sorts.plist */,
+			);
+			path = Plist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -474,8 +530,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7AC7CE1BECB19D00B52B30 /* MTHomeDropdown.xib in Resources */,
+				7D7AC7D51BECB39B00B52B30 /* cities.plist in Resources */,
 				7D24121E1BEC9D85007AA2F4 /* LaunchScreen.storyboard in Resources */,
+				7D7AC7D61BECB39B00B52B30 /* cityGroups.plist in Resources */,
+				7D7AC7D41BECB39B00B52B30 /* categories.plist in Resources */,
 				7D24121B1BEC9D85007AA2F4 /* Assets.xcassets in Resources */,
+				7D7AC7D71BECB39B00B52B30 /* sorts.plist in Resources */,
+				7D2412C11BECA969007AA2F4 /* MTHomeTopItem.xib in Resources */,
 				7D2412191BEC9D85007AA2F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,17 +573,23 @@
 				7D2412931BECA2E4007AA2F4 /* MJIvar.m in Sources */,
 				7D24128D1BECA2E4007AA2F4 /* NSArray+MASAdditions.m in Sources */,
 				7D2412851BECA2E4007AA2F4 /* UIView+Extension.m in Sources */,
+				7D2412CA1BECAE25007AA2F4 /* MTHomeDropdownSubCell.m in Sources */,
+				7D2412C01BECA969007AA2F4 /* MTHomeTopItem.m in Sources */,
 				7D24128C1BECA2E4007AA2F4 /* MASViewConstraint.m in Sources */,
+				7D2412C41BECACD2007AA2F4 /* MTCategoryViewController.m in Sources */,
 				7D2412941BECA2E4007AA2F4 /* MJMember.m in Sources */,
 				7D24128A1BECA2E4007AA2F4 /* MASLayoutConstraint.m in Sources */,
 				7D2412841BECA2E4007AA2F4 /* UIBarButtonItem+Extension.m in Sources */,
 				7D24129A1BECA2E4007AA2F4 /* NSObject+MJMember.m in Sources */,
+				7D2412C71BECAD50007AA2F4 /* MTHomeDropdownMainCell.m in Sources */,
 				7D2412861BECA2E4007AA2F4 /* MTNavigationController.m in Sources */,
+				7D2412D21BECB06B007AA2F4 /* MTCategory.m in Sources */,
 				7D2412991BECA2E4007AA2F4 /* NSObject+MJKeyValue.m in Sources */,
 				7D24128F1BECA2E4007AA2F4 /* View+MASAdditions.m in Sources */,
 				7D2412871BECA2E4007AA2F4 /* MASCompositeConstraint.m in Sources */,
 				7D24128E1BECA2E4007AA2F4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				7D2412891BECA2E4007AA2F4 /* MASConstraintMaker.m in Sources */,
+				7D7AC7CD1BECB19D00B52B30 /* MTHomeDropdown.m in Sources */,
 				7D2412961BECA2E4007AA2F4 /* MJType.m in Sources */,
 				7D2412951BECA2E4007AA2F4 /* MJMethod.m in Sources */,
 				7D24129D1BECA2E4007AA2F4 /* MTConst.m in Sources */,
@@ -757,6 +825,7 @@
 				7D24123A1BEC9D85007AA2F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D24123B1BEC9D85007AA2F4 /* Build configuration list for PBXNativeTarget "美团HDTests" */ = {
 			isa = XCConfigurationList;
@@ -765,6 +834,7 @@
 				7D24123D1BEC9D85007AA2F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D24123E1BEC9D85007AA2F4 /* Build configuration list for PBXNativeTarget "美团HDUITests" */ = {
 			isa = XCConfigurationList;
@@ -773,6 +843,7 @@
 				7D2412401BEC9D85007AA2F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

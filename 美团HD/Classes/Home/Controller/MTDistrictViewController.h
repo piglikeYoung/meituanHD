@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MTDistrictViewController : UIViewController
-
+@property (nonatomic, strong) NSArray *regions;
 @end

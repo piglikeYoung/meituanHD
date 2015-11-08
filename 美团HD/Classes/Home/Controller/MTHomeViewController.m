@@ -13,6 +13,8 @@
 #import "UIView+Extension.h"
 #import "MTCategoryViewController.h"
 #import "MTDistrictViewController.h"
+#import "MTCity.h"
+#import "MTMetaTool.h"
 
 @interface MTHomeViewController ()
 /** 分类item */
@@ -122,8 +124,15 @@ static NSString *const reuseIdentifier = @"Cell";
 
 - (void)districtClick
 {
-    // 显示分类菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTDistrictViewController alloc] init]];
+    MTDistrictViewController *district = [[MTDistrictViewController alloc] init];
+    if (self.selectedCityName) {
+        // 获得当前选中城市
+        MTCity *city = [[[MTMetaTool cities] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName]] firstObject];
+        district.regions = city.regions;
+    }
+    
+    // 显示区域菜单
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:district];
     [popover presentPopoverFromBarButtonItem:self.districtItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 

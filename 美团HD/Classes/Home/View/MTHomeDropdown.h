@@ -11,5 +11,5 @@
 @interface MTHomeDropdown : UIView
 + (instancetype)dropdown;
 
-@property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) NSArray *regions;
 @end

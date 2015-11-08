@@ -59,6 +59,7 @@
 		7DF340BF1BEED9280015B9A6 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340BB1BEED9280015B9A6 /* MTDistrictViewController.m */; };
 		7DF340C01BEED9280015B9A6 /* MTDistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */; };
 		7DF340C51BEF0AF40015B9A6 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */; };
+		7DF340C91BEF48FC0015B9A6 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340C81BEF48FC0015B9A6 /* MTMetaTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,8 @@
 		7DF340C21BEEFF850015B9A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7DF340C31BEF0AF40015B9A6 /* MTCitySearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCitySearchResultViewController.h; sourceTree = "<group>"; };
 		7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitySearchResultViewController.m; sourceTree = "<group>"; };
+		7DF340C71BEF48FC0015B9A6 /* MTMetaTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMetaTool.h; sourceTree = "<group>"; };
+		7DF340C81BEF48FC0015B9A6 /* MTMetaTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMetaTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +296,7 @@
 		7D2412431BECA132007AA2F4 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
+				7DF340C61BEF48DE0015B9A6 /* Tool */,
 				7D24129E1BECA396007AA2F4 /* Controller */,
 				7D2412A31BECA396007AA2F4 /* Model */,
 				7D2412A61BECA396007AA2F4 /* View */,
@@ -464,6 +468,15 @@
 			path = Plist;
 			sourceTree = "<group>";
 		};
+		7DF340C61BEF48DE0015B9A6 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				7DF340C71BEF48FC0015B9A6 /* MTMetaTool.h */,
+				7DF340C81BEF48FC0015B9A6 /* MTMetaTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -608,6 +621,7 @@
 				7D2412881BECA2E4007AA2F4 /* MASConstraint.m in Sources */,
 				7D24129B1BECA2E4007AA2F4 /* AppDelegate.m in Sources */,
 				7D2412901BECA2E4007AA2F4 /* MJArgument.m in Sources */,
+				7DF340C91BEF48FC0015B9A6 /* MTMetaTool.m in Sources */,
 				7D24128B1BECA2E4007AA2F4 /* MASViewAttribute.m in Sources */,
 				7D2412921BECA2E4007AA2F4 /* MJFoundation.m in Sources */,
 				7D2412931BECA2E4007AA2F4 /* MJIvar.m in Sources */,

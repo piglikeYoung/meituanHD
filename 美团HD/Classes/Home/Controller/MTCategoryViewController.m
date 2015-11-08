@@ -24,7 +24,7 @@
 - (void)loadView {
     MTHomeDropdown *dropdown = [MTHomeDropdown dropdown];
     // 加载分类数据
-    dropdown.categories = [MTCategory objectArrayWithFilename:@"categories.plist"];
+//    dropdown.categories = [MTCategory objectArrayWithFilename:@"categories.plist"];
     self.view = dropdown;
     
     // 设置控制器view在popover中的尺寸

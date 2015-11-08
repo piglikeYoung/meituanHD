@@ -12,8 +12,9 @@
 #import "UIView+Extension.h"
 #import "MTCityViewController.h"
 #import "MTNavigationController.h"
+#import "MTRegion.h"
 
-@interface MTDistrictViewController ()
+@interface MTDistrictViewController ()<MTHomeDropdownDataSource>
 - (IBAction)changeCity;
 
 @end
@@ -27,7 +28,7 @@
     UIView *title = [self.view.subviews firstObject];
     MTHomeDropdown *dropdown = [MTHomeDropdown dropdown];
     dropdown.y = title.height;
-    dropdown.regions = self.regions;
+    dropdown.dataSource = self;
     [self.view addSubview:dropdown];
     
     // 设置控制器在popover中的尺寸
@@ -42,5 +43,23 @@
     MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:city];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+#pragma mark - MTHomeDropdownDataSource
+- (NSInteger)numberOfRowsInMainTable:(MTHomeDropdown *)homeDropdown
+{
+    return self.regions.count;
+}
+
+- (NSString *)homeDropdown:(MTHomeDropdown *)homeDropdown titleForRowInMainTable:(int)row
+{
+    MTRegion *region = self.regions[row];
+    return region.name;
+}
+
+- (NSArray *)homeDropdown:(MTHomeDropdown *)homeDropdown subdataForRowInMainTable:(int)row
+{
+    MTRegion *region = self.regions[row];
+    return region.subregions;
 }
 @end

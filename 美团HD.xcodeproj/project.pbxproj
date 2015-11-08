@@ -60,6 +60,7 @@
 		7DF340C01BEED9280015B9A6 /* MTDistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */; };
 		7DF340C51BEF0AF40015B9A6 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */; };
 		7DF340C91BEF48FC0015B9A6 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340C81BEF48FC0015B9A6 /* MTMetaTool.m */; };
+		7DF340CC1BEF60C10015B9A6 /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340CB1BEF60C10015B9A6 /* MTSort.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,8 @@
 		7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitySearchResultViewController.m; sourceTree = "<group>"; };
 		7DF340C71BEF48FC0015B9A6 /* MTMetaTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMetaTool.h; sourceTree = "<group>"; };
 		7DF340C81BEF48FC0015B9A6 /* MTMetaTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMetaTool.m; sourceTree = "<group>"; };
+		7DF340CA1BEF60C10015B9A6 /* MTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSort.h; sourceTree = "<group>"; };
+		7DF340CB1BEF60C10015B9A6 /* MTSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSort.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +439,8 @@
 				7DACCD5A1BEE03FB0045808B /* MTRegion.m */,
 				7D2412D01BECB06B007AA2F4 /* MTCategory.h */,
 				7D2412D11BECB06B007AA2F4 /* MTCategory.m */,
+				7DF340CA1BEF60C10015B9A6 /* MTSort.h */,
+				7DF340CB1BEF60C10015B9A6 /* MTSort.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -625,6 +630,7 @@
 				7D24128B1BECA2E4007AA2F4 /* MASViewAttribute.m in Sources */,
 				7D2412921BECA2E4007AA2F4 /* MJFoundation.m in Sources */,
 				7D2412931BECA2E4007AA2F4 /* MJIvar.m in Sources */,
+				7DF340CC1BEF60C10015B9A6 /* MTSort.m in Sources */,
 				7DF340BD1BEED9280015B9A6 /* MTCityViewController.m in Sources */,
 				7D24128D1BECA2E4007AA2F4 /* NSArray+MASAdditions.m in Sources */,
 				7D2412851BECA2E4007AA2F4 /* UIView+Extension.m in Sources */,

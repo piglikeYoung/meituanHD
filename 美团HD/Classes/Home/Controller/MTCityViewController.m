@@ -11,15 +11,35 @@
 #import "MTCityGroup.h"
 #import "MJExtension.h"
 #import "Masonry.h"
+#import "MTConst.h"
+#import "MTCitySearchResultViewController.h"
 
 const int MTCoverTag = 999;
 
 @interface MTCityViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *cityGroups;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) MTCitySearchResultViewController *citySearchResult;
+
 @end
 
 @implementation MTCityViewController
+
+- (MTCitySearchResultViewController *)citySearchResult {
+    if (!_citySearchResult) {
+        _citySearchResult = [[MTCitySearchResultViewController alloc] init];
+        [self.view addSubview:_citySearchResult.view];
+        [_citySearchResult.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.tableView.mas_left);
+            make.right.equalTo(self.tableView.mas_right);
+            make.top.equalTo(self.tableView.mas_top);
+            make.bottom.equalTo(self.tableView.mas_bottom);
+        }];
+    }
+    
+    return _citySearchResult;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +52,8 @@ const int MTCoverTag = 999;
     
     // 加载城市数据
     self.cityGroups = [MTCityGroup objectArrayWithFilename:@"cityGroups.plist"];
+    
+    self.searchBar.tintColor = MTColor(32, 191, 179);
 }
 
 - (void)close
@@ -64,6 +86,9 @@ const int MTCoverTag = 999;
     
     // 3.修改搜索框的背景图片
     [searchBar setBackgroundImage:[UIImage imageNamed:@"bg_login_textfield_hl"]];
+    
+    // 4.显示搜索框右边的取消按钮
+    [searchBar setShowsCancelButton:YES animated:YES];
 }
 
 /**
@@ -79,6 +104,31 @@ const int MTCoverTag = 999;
     
     // 3.修改搜索框的背景图片
     [searchBar setBackgroundImage:[UIImage imageNamed:@"bg_login_textfield"]];
+    
+    // 4.显示搜索框右边的取消按钮
+    [searchBar setShowsCancelButton:NO animated:YES];
+    
+    // 5.移除搜索结果
+    self.citySearchResult.view.hidden = YES;
+}
+
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
+/**
+ *  搜索框里面的文字变化的时候调用
+ */
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length) {
+        self.citySearchResult.view.hidden = NO;
+        self.citySearchResult.searchText = searchText;
+    } else {
+        self.citySearchResult.view.hidden = YES;
+    }
 }
 
 #pragma mark - 数据源方法

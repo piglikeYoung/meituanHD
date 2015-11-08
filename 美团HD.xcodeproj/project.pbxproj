@@ -58,6 +58,7 @@
 		7DF340BE1BEED9280015B9A6 /* MTCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */; };
 		7DF340BF1BEED9280015B9A6 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340BB1BEED9280015B9A6 /* MTDistrictViewController.m */; };
 		7DF340C01BEED9280015B9A6 /* MTDistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */; };
+		7DF340C51BEF0AF40015B9A6 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +179,10 @@
 		7DF340BA1BEED9280015B9A6 /* MTDistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistrictViewController.h; sourceTree = "<group>"; };
 		7DF340BB1BEED9280015B9A6 /* MTDistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistrictViewController.m; sourceTree = "<group>"; };
 		7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDistrictViewController.xib; sourceTree = "<group>"; };
+		7DF340C11BEEFF850015B9A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		7DF340C21BEEFF850015B9A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		7DF340C31BEF0AF40015B9A6 /* MTCitySearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCitySearchResultViewController.h; sourceTree = "<group>"; };
+		7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitySearchResultViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,12 +409,14 @@
 				7D2412BB1BECA5D2007AA2F4 /* MTHomeViewController.m */,
 				7D2412C21BECACD2007AA2F4 /* MTCategoryViewController.h */,
 				7D2412C31BECACD2007AA2F4 /* MTCategoryViewController.m */,
-				7DF340B71BEED9280015B9A6 /* MTCityViewController.h */,
-				7DF340B81BEED9280015B9A6 /* MTCityViewController.m */,
-				7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */,
 				7DF340BA1BEED9280015B9A6 /* MTDistrictViewController.h */,
 				7DF340BB1BEED9280015B9A6 /* MTDistrictViewController.m */,
 				7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */,
+				7DF340B71BEED9280015B9A6 /* MTCityViewController.h */,
+				7DF340B81BEED9280015B9A6 /* MTCityViewController.m */,
+				7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */,
+				7DF340C31BEF0AF40015B9A6 /* MTCitySearchResultViewController.h */,
+				7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -630,6 +637,7 @@
 				7D2412961BECA2E4007AA2F4 /* MJType.m in Sources */,
 				7DACCD5D1BEE03FB0045808B /* MTRegion.m in Sources */,
 				7D2412951BECA2E4007AA2F4 /* MJMethod.m in Sources */,
+				7DF340C51BEF0AF40015B9A6 /* MTCitySearchResultViewController.m in Sources */,
 				7D24129D1BECA2E4007AA2F4 /* MTConst.m in Sources */,
 				7D2412981BECA2E4007AA2F4 /* NSObject+MJCoding.m in Sources */,
 				7D2412911BECA2E4007AA2F4 /* MJConst.m in Sources */,
@@ -673,6 +681,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D2412181BEC9D85007AA2F4 /* Base */,
+				7DF340C11BEEFF850015B9A6 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -681,6 +690,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7D24121D1BEC9D85007AA2F4 /* Base */,
+				7DF340C21BEEFF850015B9A6 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

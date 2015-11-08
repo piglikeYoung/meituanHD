@@ -10,6 +10,9 @@
 
 @interface MTHomeTopItem()
 @property (weak, nonatomic) IBOutlet UIButton *iconButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+
 @end
 
 @implementation MTHomeTopItem
@@ -30,4 +33,21 @@
 {
     [self.iconButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)setIcon:(NSString *)icon highIcon:(NSString *)highIcon
+{
+    [self.iconButton setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
+    [self.iconButton setImage:[UIImage imageNamed:highIcon] forState:UIControlStateHighlighted];
+}
+
+- (void)setTitle:(NSString *)title
+{
+    self.titleLabel.text = title;
+}
+
+- (void)setSubtitle:(NSString *)subtitle
+{
+    self.subtitleLabel.text = subtitle;
+}
+
 @end

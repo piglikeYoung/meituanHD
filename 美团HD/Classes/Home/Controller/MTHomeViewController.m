@@ -22,6 +22,10 @@
 /** 排序item */
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
 
+/** 当前选中的城市 */
+@property (nonatomic, copy) NSString *selectedCityName;
+
+
 @end
 
 @implementation MTHomeViewController
@@ -43,9 +47,31 @@ static NSString *const reuseIdentifier = @"Cell";
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
+    // 监听城市改变
+    [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
+    
     // 设置导航栏内容
     [self setupLeftNav];
     [self setupRightNav];
+}
+
+- (void)dealloc {
+    [MTNotificationCenter removeObserver:self];
+}
+
+#pragma mark - 监听通知
+- (void)cityDidChange:(NSNotification *)notification
+{
+    self.selectedCityName = notification.userInfo[MTSelectCityName];
+    
+    // 1.更换顶部区域item的文字
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.districtItem.customView;
+    [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
+    [topItem setSubtitle:nil];
+    
+    // 2.刷新表格数据
+#warning TODO
+    
 }
 
 #pragma mark - 设置导航栏内容

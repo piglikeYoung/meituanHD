@@ -20,7 +20,7 @@ const int MTCoverTag = 999;
 @property (nonatomic, strong) NSArray *cityGroups;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) MTCitySearchResultViewController *citySearchResult;
+@property (nonatomic, weak) MTCitySearchResultViewController *citySearchResult;
 
 @end
 
@@ -28,8 +28,10 @@ const int MTCoverTag = 999;
 
 - (MTCitySearchResultViewController *)citySearchResult {
     if (!_citySearchResult) {
-        _citySearchResult = [[MTCitySearchResultViewController alloc] init];
-        [self.view addSubview:_citySearchResult.view];
+        MTCitySearchResultViewController *citySearchResult = [[MTCitySearchResultViewController alloc] init];
+        [self addChildViewController:citySearchResult];
+        self.citySearchResult = citySearchResult;
+        [self.view addSubview:self.citySearchResult.view];
         [_citySearchResult.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.tableView.mas_left);
             make.right.equalTo(self.tableView.mas_right);
@@ -110,6 +112,7 @@ const int MTCoverTag = 999;
     
     // 5.移除搜索结果
     self.citySearchResult.view.hidden = YES;
+    searchBar.text = nil;
 }
 
 
@@ -174,5 +177,12 @@ const int MTCoverTag = 999;
     
     // 使用kvc，查找数组里面的title属性，由于是数组所以会遍历数组里每个元素的title，然后title组成个新数组返回
     return [self.cityGroups valueForKeyPath:@"title"];
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MTCityGroup *group = self.cityGroups[indexPath.section];
+    // 发出通知
+    [MTNotificationCenter postNotificationName:MTCityDidChangeNotification object:nil userInfo:@{MTSelectCityName : group.cities[indexPath.row]}];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

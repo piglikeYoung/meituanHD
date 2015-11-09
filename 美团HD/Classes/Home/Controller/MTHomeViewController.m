@@ -18,6 +18,7 @@
 #import "MTSortViewController.h"
 #import "MTSort.h"
 #import "MTCategory.h"
+#import "MTRegion.h"
 
 @interface MTHomeViewController ()
 /** 分类item */
@@ -70,6 +71,8 @@ static NSString *const reuseIdentifier = @"Cell";
     [MTNotificationCenter addObserver:self selector:@selector(sortDidChange:) name:MTSortDidChangeNotification object:nil];
     // 监听分类改变
     [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
+    // 监听区域改变
+    [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
     
     // 设置导航栏内容
     [self setupLeftNav];
@@ -117,6 +120,32 @@ static NSString *const reuseIdentifier = @"Cell";
     
     // 2.关闭popover
     [self.categoryPopover dismissPopoverAnimated:YES];
+    
+    // 3.刷新表格数据
+//    [self loadNewDeals];
+}
+
+- (void)regionDidChange:(NSNotification *)notification {
+    MTRegion *region = notification.userInfo[MTSelectRegion];
+    NSString *subregionName = notification.userInfo[MTSelectSubregionName];
+    
+    if (subregionName == nil || [subregionName isEqualToString:@"全部"]) {
+        self.selectedRegionName = region.name;
+    } else {
+        self.selectedRegionName = subregionName;
+    }
+    
+    if ([self.selectedRegionName isEqualToString:@"全部"]) {
+        self.selectedRegionName = nil;
+    }
+
+    // 1.更换顶部item的文字
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.regionItem.customView;
+    [topItem setTitle:[NSString stringWithFormat:@"%@ - %@", self.selectedCityName, region.name]];
+    [topItem setSubtitle:subregionName];
+    
+    // 2.关闭popover
+    [self.regionPopover dismissPopoverAnimated:YES];
     
     // 3.刷新表格数据
 //    [self loadNewDeals];

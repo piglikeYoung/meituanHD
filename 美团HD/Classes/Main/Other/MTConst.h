@@ -13,3 +13,6 @@
 
 extern NSString *const MTCityDidChangeNotification;
 extern NSString *const MTSelectCityName;
+
+extern NSString *const MTSortDidChangeNotification;
+extern NSString *const MTSelectSort;

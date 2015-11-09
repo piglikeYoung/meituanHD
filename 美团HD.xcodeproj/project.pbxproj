@@ -54,6 +54,7 @@
 		7DACCD5B1BEE03FB0045808B /* MTCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD561BEE03FB0045808B /* MTCity.m */; };
 		7DACCD5C1BEE03FB0045808B /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD581BEE03FB0045808B /* MTCityGroup.m */; };
 		7DACCD5D1BEE03FB0045808B /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD5A1BEE03FB0045808B /* MTRegion.m */; };
+		7DC3F74D1BF036AE00D00DCF /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC3F74C1BF036AE00D00DCF /* MTSortViewController.m */; };
 		7DF340BD1BEED9280015B9A6 /* MTCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340B81BEED9280015B9A6 /* MTCityViewController.m */; };
 		7DF340BE1BEED9280015B9A6 /* MTCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */; };
 		7DF340BF1BEED9280015B9A6 /* MTRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340BB1BEED9280015B9A6 /* MTRegionViewController.m */; };
@@ -175,6 +176,8 @@
 		7DACCD581BEE03FB0045808B /* MTCityGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityGroup.m; sourceTree = "<group>"; };
 		7DACCD591BEE03FB0045808B /* MTRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegion.h; sourceTree = "<group>"; };
 		7DACCD5A1BEE03FB0045808B /* MTRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegion.m; sourceTree = "<group>"; };
+		7DC3F74B1BF036AE00D00DCF /* MTSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSortViewController.h; sourceTree = "<group>"; };
+		7DC3F74C1BF036AE00D00DCF /* MTSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSortViewController.m; sourceTree = "<group>"; };
 		7DF340B71BEED9280015B9A6 /* MTCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityViewController.h; sourceTree = "<group>"; };
 		7DF340B81BEED9280015B9A6 /* MTCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityViewController.m; sourceTree = "<group>"; };
 		7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTCityViewController.xib; sourceTree = "<group>"; };
@@ -419,6 +422,8 @@
 				7DF340BA1BEED9280015B9A6 /* MTRegionViewController.h */,
 				7DF340BB1BEED9280015B9A6 /* MTRegionViewController.m */,
 				7DF340BC1BEED9280015B9A6 /* MTRegionViewController.xib */,
+				7DC3F74B1BF036AE00D00DCF /* MTSortViewController.h */,
+				7DC3F74C1BF036AE00D00DCF /* MTSortViewController.m */,
 				7DF340B71BEED9280015B9A6 /* MTCityViewController.h */,
 				7DF340B81BEED9280015B9A6 /* MTCityViewController.m */,
 				7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */,
@@ -660,6 +665,7 @@
 				7DF340C51BEF0AF40015B9A6 /* MTCitySearchResultViewController.m in Sources */,
 				7D24129D1BECA2E4007AA2F4 /* MTConst.m in Sources */,
 				7D2412981BECA2E4007AA2F4 /* NSObject+MJCoding.m in Sources */,
+				7DC3F74D1BF036AE00D00DCF /* MTSortViewController.m in Sources */,
 				7D2412911BECA2E4007AA2F4 /* MJConst.m in Sources */,
 				7D2412101BEC9D85007AA2F4 /* main.m in Sources */,
 			);

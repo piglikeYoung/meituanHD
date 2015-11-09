@@ -15,18 +15,32 @@
 #import "MTRegionViewController.h"
 #import "MTCity.h"
 #import "MTMetaTool.h"
+#import "MTSortViewController.h"
+#import "MTSort.h"
 
 @interface MTHomeViewController ()
 /** 分类item */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区item */
-@property (nonatomic, weak) UIBarButtonItem *districtItem;
+@property (nonatomic, weak) UIBarButtonItem *regionItem;
 /** 排序item */
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
 
-/** 当前选中的城市 */
+/** 当前选中的城市名字 */
 @property (nonatomic, copy) NSString *selectedCityName;
+/** 当前选中的分类名字 */
+@property (nonatomic, copy) NSString *selectedCategoryName;
+/** 当前选中的区域名字 */
+@property (nonatomic, copy) NSString *selectedRegionName;
+/** 当前选中的排序 */
+@property (nonatomic, strong) MTSort *selectedSort;
 
+/** 分类popover */
+@property (nonatomic, strong) UIPopoverController *categoryPopover;
+/** 区域popover */
+@property (nonatomic, strong) UIPopoverController *regionPopover;
+/** 排序popover */
+@property (nonatomic, strong) UIPopoverController *sortPopover;
 
 @end
 
@@ -51,6 +65,8 @@ static NSString *const reuseIdentifier = @"Cell";
     
     // 监听城市改变
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
+    // 监听排序改变
+    [MTNotificationCenter addObserver:self selector:@selector(sortDidChange:) name:MTSortDidChangeNotification object:nil];
     
     // 设置导航栏内容
     [self setupLeftNav];
@@ -67,7 +83,7 @@ static NSString *const reuseIdentifier = @"Cell";
     self.selectedCityName = notification.userInfo[MTSelectCityName];
     
     // 1.更换顶部区域item的文字
-    MTHomeTopItem *topItem = (MTHomeTopItem *)self.districtItem.customView;
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.regionItem.customView;
     [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     [topItem setSubtitle:nil];
     
@@ -76,11 +92,26 @@ static NSString *const reuseIdentifier = @"Cell";
     
 }
 
+- (void)sortDidChange:(NSNotification *)notification {
+    self.selectedSort = notification.userInfo[MTSelectSort];
+    
+    // 1.更换顶部排序item的文字
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.sortItem.customView;
+    [topItem setSubtitle:self.selectedSort.label];
+    
+    // 2.关闭Popover
+    [self.sortPopover dismissPopoverAnimated:YES];
+    
+    // 3.刷新表格数据
+//    [self loadNewDeals];
+}
+
 #pragma mark - 设置导航栏内容
 - (void)setupLeftNav {
     
     // 1.logo
     UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_meituan_logo"] style:UIBarButtonItemStyleDone target:nil action:nil];
+    logoItem.enabled = NO;
     
     // 2.类别
     MTHomeTopItem *categoryTopItem = [MTHomeTopItem item];
@@ -89,18 +120,20 @@ static NSString *const reuseIdentifier = @"Cell";
     self.categoryItem = categoryItem;
     
     // 3.地区
-    MTHomeTopItem *districtTopItem = [MTHomeTopItem item];
-    [districtTopItem addTarget:self action:@selector(districtClick)];
-    UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtTopItem];
-    self.districtItem = districtItem;
+    MTHomeTopItem *regionTopItem = [MTHomeTopItem item];
+    [regionTopItem addTarget:self action:@selector(districtClick)];
+    UIBarButtonItem *regionItem = [[UIBarButtonItem alloc] initWithCustomView:regionTopItem];
+    self.regionItem = regionItem;
     
     // 4.排序
     MTHomeTopItem *sortTopItem = [MTHomeTopItem item];
+    [sortTopItem setTitle:@"排序"];
+    [sortTopItem setIcon:@"icon_sort" highIcon:@"icon_sort_highlighted"];
     [sortTopItem addTarget:self action:@selector(sortClick)];
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortTopItem];
     self.sortItem = sortItem;
     
-    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, districtItem, sortItem];
+    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, regionItem, sortItem];
 
 }
 
@@ -120,6 +153,8 @@ static NSString *const reuseIdentifier = @"Cell";
     // 显示分类菜单
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
     [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    self.categoryPopover = popover;
 }
 
 - (void)districtClick
@@ -133,12 +168,16 @@ static NSString *const reuseIdentifier = @"Cell";
     
     // 显示区域菜单
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:district];
-    [popover presentPopoverFromBarButtonItem:self.districtItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [popover presentPopoverFromBarButtonItem:self.regionItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.regionPopover = popover;
 }
 
 - (void)sortClick
 {
-    MTLog(@"sortClick");
+    // 显示排序菜单
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTSortViewController alloc] init]];
+    [popover presentPopoverFromBarButtonItem:self.sortItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.sortPopover = popover;
 }
 
 

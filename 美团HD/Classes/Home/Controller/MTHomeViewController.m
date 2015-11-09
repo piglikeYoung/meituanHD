@@ -19,8 +19,9 @@
 #import "MTSort.h"
 #import "MTCategory.h"
 #import "MTRegion.h"
+#import "DPAPI.h"
 
-@interface MTHomeViewController ()
+@interface MTHomeViewController ()<DPRequestDelegate>
 /** 分类item */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区item */
@@ -94,7 +95,7 @@ static NSString *const reuseIdentifier = @"Cell";
     [topItem setSubtitle:nil];
     
     // 2.刷新表格数据
-#warning TODO
+    [self loadNewDeals];
     
 }
 
@@ -122,7 +123,7 @@ static NSString *const reuseIdentifier = @"Cell";
     [self.categoryPopover dismissPopoverAnimated:YES];
     
     // 3.刷新表格数据
-//    [self loadNewDeals];
+    [self loadNewDeals];
 }
 
 - (void)regionDidChange:(NSNotification *)notification {
@@ -148,7 +149,7 @@ static NSString *const reuseIdentifier = @"Cell";
     [self.regionPopover dismissPopoverAnimated:YES];
     
     // 3.刷新表格数据
-//    [self loadNewDeals];
+    [self loadNewDeals];
 }
 
 - (void)sortDidChange:(NSNotification *)notification {
@@ -162,7 +163,43 @@ static NSString *const reuseIdentifier = @"Cell";
     [self.sortPopover dismissPopoverAnimated:YES];
     
     // 3.刷新表格数据
-//    [self loadNewDeals];
+    [self loadNewDeals];
+}
+
+#pragma mark - 跟服务器交互
+- (void)loadNewDeals {
+    DPAPI *api = [[DPAPI alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    // 城市
+    params[@"city"] = self.selectedCityName;
+    // 每页的条数
+    params[@"limit"] = @5;
+    // 分类(类别)
+    if (self.selectedCategoryName) {
+        params[@"category"] = self.selectedCategoryName;
+    }
+    // 区域
+    if (self.selectedRegionName) {
+        params[@"region"] = self.selectedRegionName;
+    }
+    // 排序
+    if (self.selectedSort) {
+        params[@"sort"] = @(self.selectedSort.value);
+    }
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+    MTLog(@"请求参数:%@", params);
+    
+}
+
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
+{
+    MTLog(@"请求成功--%@", result);
+}
+
+- (void)request:(DPRequest *)request didFailWithError:(NSError *)error
+{
+    MTLog(@"请求失败--%@", error);
 }
 
 #pragma mark - 设置导航栏内容

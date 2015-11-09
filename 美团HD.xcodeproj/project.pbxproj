@@ -55,6 +55,9 @@
 		7DACCD5C1BEE03FB0045808B /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD581BEE03FB0045808B /* MTCityGroup.m */; };
 		7DACCD5D1BEE03FB0045808B /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD5A1BEE03FB0045808B /* MTRegion.m */; };
 		7DC3F74D1BF036AE00D00DCF /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC3F74C1BF036AE00D00DCF /* MTSortViewController.m */; };
+		7DC3F7541BF07D6B00D00DCF /* DPAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC3F7501BF07D6B00D00DCF /* DPAPI.m */; };
+		7DC3F7551BF07D6B00D00DCF /* DPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC3F7531BF07D6B00D00DCF /* DPRequest.m */; };
+		7DC3F7571BF084BB00D00DCF /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC3F7561BF084BB00D00DCF /* Foundation+Log.m */; };
 		7DF340BD1BEED9280015B9A6 /* MTCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340B81BEED9280015B9A6 /* MTCityViewController.m */; };
 		7DF340BE1BEED9280015B9A6 /* MTCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */; };
 		7DF340BF1BEED9280015B9A6 /* MTRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340BB1BEED9280015B9A6 /* MTRegionViewController.m */; };
@@ -178,6 +181,12 @@
 		7DACCD5A1BEE03FB0045808B /* MTRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegion.m; sourceTree = "<group>"; };
 		7DC3F74B1BF036AE00D00DCF /* MTSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSortViewController.h; sourceTree = "<group>"; };
 		7DC3F74C1BF036AE00D00DCF /* MTSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSortViewController.m; sourceTree = "<group>"; };
+		7DC3F74F1BF07D6B00D00DCF /* DPAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAPI.h; sourceTree = "<group>"; };
+		7DC3F7501BF07D6B00D00DCF /* DPAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAPI.m; sourceTree = "<group>"; };
+		7DC3F7511BF07D6B00D00DCF /* DPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConstants.h; sourceTree = "<group>"; };
+		7DC3F7521BF07D6B00D00DCF /* DPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRequest.h; sourceTree = "<group>"; };
+		7DC3F7531BF07D6B00D00DCF /* DPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRequest.m; sourceTree = "<group>"; };
+		7DC3F7561BF084BB00D00DCF /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		7DF340B71BEED9280015B9A6 /* MTCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityViewController.h; sourceTree = "<group>"; };
 		7DF340B81BEED9280015B9A6 /* MTCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityViewController.m; sourceTree = "<group>"; };
 		7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTCityViewController.xib; sourceTree = "<group>"; };
@@ -314,6 +323,7 @@
 		7D2412451BECA2E4007AA2F4 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				7DC3F7561BF084BB00D00DCF /* Foundation+Log.m */,
 				7D2412461BECA2E4007AA2F4 /* UIBarButtonItem+Extension.h */,
 				7D2412471BECA2E4007AA2F4 /* UIBarButtonItem+Extension.m */,
 				7D2412481BECA2E4007AA2F4 /* UIView+Extension.h */,
@@ -334,6 +344,7 @@
 		7D24124D1BECA2E4007AA2F4 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7DC3F74E1BF07D6B00D00DCF /* dianpingapi */,
 				7D24124E1BECA2E4007AA2F4 /* Masonry */,
 				7D2412661BECA2E4007AA2F4 /* MJExtension */,
 			);
@@ -476,6 +487,18 @@
 				7D7AC7D31BECB39A00B52B30 /* sorts.plist */,
 			);
 			path = Plist;
+			sourceTree = "<group>";
+		};
+		7DC3F74E1BF07D6B00D00DCF /* dianpingapi */ = {
+			isa = PBXGroup;
+			children = (
+				7DC3F74F1BF07D6B00D00DCF /* DPAPI.h */,
+				7DC3F7501BF07D6B00D00DCF /* DPAPI.m */,
+				7DC3F7511BF07D6B00D00DCF /* DPConstants.h */,
+				7DC3F7521BF07D6B00D00DCF /* DPRequest.h */,
+				7DC3F7531BF07D6B00D00DCF /* DPRequest.m */,
+			);
+			path = dianpingapi;
 			sourceTree = "<group>";
 		};
 		7DF340C61BEF48DE0015B9A6 /* Tool */ = {
@@ -626,6 +649,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DC3F7541BF07D6B00D00DCF /* DPAPI.m in Sources */,
 				7D2412971BECA2E4007AA2F4 /* MJTypeEncoding.m in Sources */,
 				7D2412BC1BECA5D2007AA2F4 /* MTHomeViewController.m in Sources */,
 				7D2412881BECA2E4007AA2F4 /* MASConstraint.m in Sources */,
@@ -648,6 +672,7 @@
 				7D2412941BECA2E4007AA2F4 /* MJMember.m in Sources */,
 				7D24128A1BECA2E4007AA2F4 /* MASLayoutConstraint.m in Sources */,
 				7D2412841BECA2E4007AA2F4 /* UIBarButtonItem+Extension.m in Sources */,
+				7DC3F7551BF07D6B00D00DCF /* DPRequest.m in Sources */,
 				7D24129A1BECA2E4007AA2F4 /* NSObject+MJMember.m in Sources */,
 				7D2412C71BECAD50007AA2F4 /* MTHomeDropdownMainCell.m in Sources */,
 				7D2412861BECA2E4007AA2F4 /* MTNavigationController.m in Sources */,
@@ -665,6 +690,7 @@
 				7DF340C51BEF0AF40015B9A6 /* MTCitySearchResultViewController.m in Sources */,
 				7D24129D1BECA2E4007AA2F4 /* MTConst.m in Sources */,
 				7D2412981BECA2E4007AA2F4 /* NSObject+MJCoding.m in Sources */,
+				7DC3F7571BF084BB00D00DCF /* Foundation+Log.m in Sources */,
 				7DC3F74D1BF036AE00D00DCF /* MTSortViewController.m in Sources */,
 				7D2412911BECA2E4007AA2F4 /* MJConst.m in Sources */,
 				7D2412101BEC9D85007AA2F4 /* main.m in Sources */,

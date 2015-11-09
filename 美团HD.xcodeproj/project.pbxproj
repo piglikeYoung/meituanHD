@@ -56,8 +56,8 @@
 		7DACCD5D1BEE03FB0045808B /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD5A1BEE03FB0045808B /* MTRegion.m */; };
 		7DF340BD1BEED9280015B9A6 /* MTCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340B81BEED9280015B9A6 /* MTCityViewController.m */; };
 		7DF340BE1BEED9280015B9A6 /* MTCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */; };
-		7DF340BF1BEED9280015B9A6 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340BB1BEED9280015B9A6 /* MTDistrictViewController.m */; };
-		7DF340C01BEED9280015B9A6 /* MTDistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */; };
+		7DF340BF1BEED9280015B9A6 /* MTRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340BB1BEED9280015B9A6 /* MTRegionViewController.m */; };
+		7DF340C01BEED9280015B9A6 /* MTRegionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DF340BC1BEED9280015B9A6 /* MTRegionViewController.xib */; };
 		7DF340C51BEF0AF40015B9A6 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340C41BEF0AF40015B9A6 /* MTCitySearchResultViewController.m */; };
 		7DF340C91BEF48FC0015B9A6 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340C81BEF48FC0015B9A6 /* MTMetaTool.m */; };
 		7DF340CC1BEF60C10015B9A6 /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF340CB1BEF60C10015B9A6 /* MTSort.m */; };
@@ -178,9 +178,9 @@
 		7DF340B71BEED9280015B9A6 /* MTCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityViewController.h; sourceTree = "<group>"; };
 		7DF340B81BEED9280015B9A6 /* MTCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityViewController.m; sourceTree = "<group>"; };
 		7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTCityViewController.xib; sourceTree = "<group>"; };
-		7DF340BA1BEED9280015B9A6 /* MTDistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistrictViewController.h; sourceTree = "<group>"; };
-		7DF340BB1BEED9280015B9A6 /* MTDistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistrictViewController.m; sourceTree = "<group>"; };
-		7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDistrictViewController.xib; sourceTree = "<group>"; };
+		7DF340BA1BEED9280015B9A6 /* MTRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegionViewController.h; sourceTree = "<group>"; };
+		7DF340BB1BEED9280015B9A6 /* MTRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegionViewController.m; sourceTree = "<group>"; };
+		7DF340BC1BEED9280015B9A6 /* MTRegionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTRegionViewController.xib; sourceTree = "<group>"; };
 		7DF340C11BEEFF850015B9A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		7DF340C21BEEFF850015B9A6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		7DF340C31BEF0AF40015B9A6 /* MTCitySearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCitySearchResultViewController.h; sourceTree = "<group>"; };
@@ -416,9 +416,9 @@
 				7D2412BB1BECA5D2007AA2F4 /* MTHomeViewController.m */,
 				7D2412C21BECACD2007AA2F4 /* MTCategoryViewController.h */,
 				7D2412C31BECACD2007AA2F4 /* MTCategoryViewController.m */,
-				7DF340BA1BEED9280015B9A6 /* MTDistrictViewController.h */,
-				7DF340BB1BEED9280015B9A6 /* MTDistrictViewController.m */,
-				7DF340BC1BEED9280015B9A6 /* MTDistrictViewController.xib */,
+				7DF340BA1BEED9280015B9A6 /* MTRegionViewController.h */,
+				7DF340BB1BEED9280015B9A6 /* MTRegionViewController.m */,
+				7DF340BC1BEED9280015B9A6 /* MTRegionViewController.xib */,
 				7DF340B71BEED9280015B9A6 /* MTCityViewController.h */,
 				7DF340B81BEED9280015B9A6 /* MTCityViewController.m */,
 				7DF340B91BEED9280015B9A6 /* MTCityViewController.xib */,
@@ -593,7 +593,7 @@
 				7D7AC7D41BECB39B00B52B30 /* categories.plist in Resources */,
 				7D24121B1BEC9D85007AA2F4 /* Assets.xcassets in Resources */,
 				7D7AC7D71BECB39B00B52B30 /* sorts.plist in Resources */,
-				7DF340C01BEED9280015B9A6 /* MTDistrictViewController.xib in Resources */,
+				7DF340C01BEED9280015B9A6 /* MTRegionViewController.xib in Resources */,
 				7D2412C11BECA969007AA2F4 /* MTHomeTopItem.xib in Resources */,
 				7DF340BE1BEED9280015B9A6 /* MTCityViewController.xib in Resources */,
 				7D2412191BEC9D85007AA2F4 /* Main.storyboard in Resources */,
@@ -636,7 +636,7 @@
 				7D2412851BECA2E4007AA2F4 /* UIView+Extension.m in Sources */,
 				7D2412CA1BECAE25007AA2F4 /* MTHomeDropdownSubCell.m in Sources */,
 				7D2412C01BECA969007AA2F4 /* MTHomeTopItem.m in Sources */,
-				7DF340BF1BEED9280015B9A6 /* MTDistrictViewController.m in Sources */,
+				7DF340BF1BEED9280015B9A6 /* MTRegionViewController.m in Sources */,
 				7DACCD5C1BEE03FB0045808B /* MTCityGroup.m in Sources */,
 				7D24128C1BECA2E4007AA2F4 /* MASViewConstraint.m in Sources */,
 				7D2412C41BECACD2007AA2F4 /* MTCategoryViewController.m in Sources */,

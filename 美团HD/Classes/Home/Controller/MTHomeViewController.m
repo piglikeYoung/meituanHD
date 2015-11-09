@@ -12,7 +12,7 @@
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
 #import "MTCategoryViewController.h"
-#import "MTDistrictViewController.h"
+#import "MTRegionViewController.h"
 #import "MTCity.h"
 #import "MTMetaTool.h"
 
@@ -124,7 +124,7 @@ static NSString *const reuseIdentifier = @"Cell";
 
 - (void)districtClick
 {
-    MTDistrictViewController *district = [[MTDistrictViewController alloc] init];
+    MTRegionViewController *district = [[MTRegionViewController alloc] init];
     if (self.selectedCityName) {
         // 获得当前选中城市
         MTCity *city = [[[MTMetaTool cities] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName]] firstObject];

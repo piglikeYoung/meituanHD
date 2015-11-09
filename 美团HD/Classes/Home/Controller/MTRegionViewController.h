@@ -1,5 +1,5 @@
 //
-//  MTDistrictViewController.h
+//  MTRegionViewController.h
 //  美团HD
 //
 //  Created by apple on 14/11/23.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTDistrictViewController : UIViewController
+@interface MTRegionViewController : UIViewController
 @property (nonatomic, strong) NSArray *regions;
 @end

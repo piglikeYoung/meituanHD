@@ -1,12 +1,12 @@
 //
-//  MTDistrictViewController.m
+//  MTRegionViewController.h
 //  美团HD
 //
 //  Created by apple on 14/11/23.
 //  Copyright (c) 2014年 heima. All rights reserved.
 //
 
-#import "MTDistrictViewController.h"
+#import "MTRegionViewController.h"
 #import "MTHomeDropdown.h"
 #import "Masonry.h"
 #import "UIView+Extension.h"
@@ -14,12 +14,12 @@
 #import "MTNavigationController.h"
 #import "MTRegion.h"
 
-@interface MTDistrictViewController ()<MTHomeDropdownDataSource>
+@interface MTRegionViewController ()<MTHomeDropdownDataSource>
 - (IBAction)changeCity;
 
 @end
 
-@implementation MTDistrictViewController
+@implementation MTRegionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

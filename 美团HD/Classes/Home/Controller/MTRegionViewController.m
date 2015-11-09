@@ -39,10 +39,12 @@
  *  切换城市
  */
 - (IBAction)changeCity {
+    [self.popover dismissPopoverAnimated:YES];
+    
     MTCityViewController *city = [[MTCityViewController alloc] init];
     MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:city];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:nav animated:YES completion:nil];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - MTHomeDropdownDataSource

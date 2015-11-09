@@ -151,25 +151,24 @@ static NSString *const reuseIdentifier = @"Cell";
 - (void)categoryClick
 {
     // 显示分类菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
-    [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    
-    self.categoryPopover = popover;
+    self.categoryPopover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
+    [self.categoryPopover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)districtClick
 {
-    MTRegionViewController *district = [[MTRegionViewController alloc] init];
+    MTRegionViewController *region = [[MTRegionViewController alloc] init];
     if (self.selectedCityName) {
         // 获得当前选中城市
         MTCity *city = [[[MTMetaTool cities] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName]] firstObject];
-        district.regions = city.regions;
+        region.regions = city.regions;
     }
     
     // 显示区域菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:district];
-    [popover presentPopoverFromBarButtonItem:self.regionItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    self.regionPopover = popover;
+    self.regionPopover = [[UIPopoverController alloc] initWithContentViewController:region];
+    [self.regionPopover presentPopoverFromBarButtonItem:self.regionItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    region.popover = self.regionPopover;
+
 }
 
 - (void)sortClick

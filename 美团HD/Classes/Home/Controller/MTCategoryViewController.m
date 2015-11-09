@@ -12,11 +12,12 @@
 #import "MTCategory.h"
 #import "MJExtension.h"
 #import "MTMetaTool.h"
+#import "MTConst.h"
 
 // iPad中控制器的view的尺寸默认都是1024x768, MTHomeDropdown的尺寸默认是300x340
 // MTCategoryViewController显示在popover中,尺寸变为480x320, MTHomeDropdown的尺寸也跟着减小:0x0
 
-@interface MTCategoryViewController ()<MTHomeDropdownDataSource>
+@interface MTCategoryViewController ()<MTHomeDropdownDataSource, MTHomeDropdownDelegate>
 
 @end
 
@@ -25,6 +26,7 @@
 - (void)loadView {
     MTHomeDropdown *dropdown = [MTHomeDropdown dropdown];
     dropdown.dataSource = self;
+    dropdown.delegate = self;
     self.view = dropdown;
     
     // 设置控制器view在popover中的尺寸
@@ -62,6 +64,21 @@
 {
     MTCategory *category = [MTMetaTool categories][row];
     return category.small_highlighted_icon;
+}
+
+#pragma mark - MTHomeDropdownDelegate
+- (void)homeDropdown:(MTHomeDropdown *)homeDropdown didSelectRowInMainTable:(int)row {
+    MTCategory *category = [MTMetaTool categories][row];
+    if (category.subcategories.count == 0) {
+        // 发出通知
+        [MTNotificationCenter postNotificationName:MTCategoryDidChangeNotification object:nil userInfo:@{MTSelectCategory : category}];
+    }
+}
+
+- (void)homeDropdown:(MTHomeDropdown *)homeDropdown didSelectRowInSubTable:(int)subrow inMainTable:(int)mainRow {
+    MTCategory *category = [MTMetaTool categories][mainRow];
+    // 发出通知
+    [MTNotificationCenter postNotificationName:MTCategoryDidChangeNotification object:nil userInfo:@{MTSelectCategory : category, MTSelectSubcategoryName : category.subcategories[subrow]}];
 }
 
 @end

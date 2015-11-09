@@ -17,6 +17,7 @@
 #import "MTMetaTool.h"
 #import "MTSortViewController.h"
 #import "MTSort.h"
+#import "MTCategory.h"
 
 @interface MTHomeViewController ()
 /** 分类item */
@@ -67,6 +68,8 @@ static NSString *const reuseIdentifier = @"Cell";
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
     // 监听排序改变
     [MTNotificationCenter addObserver:self selector:@selector(sortDidChange:) name:MTSortDidChangeNotification object:nil];
+    // 监听分类改变
+    [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
     
     // 设置导航栏内容
     [self setupLeftNav];
@@ -90,6 +93,33 @@ static NSString *const reuseIdentifier = @"Cell";
     // 2.刷新表格数据
 #warning TODO
     
+}
+
+- (void)categoryDidChange:(NSNotification *)notification {
+    MTCategory *category = notification.userInfo[MTSelectCategory];
+    NSString *subcategoryName = notification.userInfo[MTSelectSubcategoryName];
+    
+    if (subcategoryName == nil || [subcategoryName isEqualToString:@"全部"]) { // 点击的数据没有子分类
+        self.selectedCategoryName = category.name;
+    } else {
+        self.selectedCategoryName = subcategoryName;
+    }
+    
+    if ([self.selectedCategoryName isEqualToString:@"全部分类"]) {
+        self.selectedCategoryName = nil;
+    }
+    
+    // 1.更换顶部item的文字
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.categoryItem.customView;
+    [topItem setIcon:category.icon highIcon:category.highlighted_icon];
+    [topItem setTitle:category.name];
+    [topItem setSubtitle:subcategoryName];
+    
+    // 2.关闭popover
+    [self.categoryPopover dismissPopoverAnimated:YES];
+    
+    // 3.刷新表格数据
+//    [self loadNewDeals];
 }
 
 - (void)sortDidChange:(NSNotification *)notification {

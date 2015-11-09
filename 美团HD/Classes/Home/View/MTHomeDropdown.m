@@ -79,6 +79,16 @@
         self.selectedMainRow = indexPath.row;
         // 刷新右边的数据
         [self.subTableView reloadData];
+        
+        if ([self.delegate respondsToSelector:@selector(homeDropdown:didSelectRowInMainTable:)]) {
+            [self.delegate homeDropdown:self didSelectRowInMainTable:indexPath.row];
+        }
+        
+    } else {
+        // 通知代理
+        if ([self.delegate respondsToSelector:@selector(homeDropdown:didSelectRowInSubTable:inMainTable:)]) {
+            [self.delegate homeDropdown:self didSelectRowInSubTable:indexPath.row inMainTable:self.selectedMainRow];
+        }
     }
 }
 

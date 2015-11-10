@@ -45,6 +45,7 @@
 		7D2412C71BECAD50007AA2F4 /* MTHomeDropdownMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412C61BECAD50007AA2F4 /* MTHomeDropdownMainCell.m */; };
 		7D2412CA1BECAE25007AA2F4 /* MTHomeDropdownSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412C91BECAE25007AA2F4 /* MTHomeDropdownSubCell.m */; };
 		7D2412D21BECB06B007AA2F4 /* MTCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2412D11BECB06B007AA2F4 /* MTCategory.m */; };
+		7D2751C71BF199FB00FFCB76 /* MTCenterLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2751C61BF199FB00FFCB76 /* MTCenterLineLabel.m */; };
 		7D7AC7CD1BECB19D00B52B30 /* MTHomeDropdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AC7CB1BECB19D00B52B30 /* MTHomeDropdown.m */; };
 		7D7AC7CE1BECB19D00B52B30 /* MTHomeDropdown.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7CC1BECB19D00B52B30 /* MTHomeDropdown.xib */; };
 		7D7AC7D41BECB39B00B52B30 /* categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D01BECB39A00B52B30 /* categories.plist */; };
@@ -185,6 +186,8 @@
 		7D2412C91BECAE25007AA2F4 /* MTHomeDropdownSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdownSubCell.m; sourceTree = "<group>"; };
 		7D2412D01BECB06B007AA2F4 /* MTCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCategory.h; sourceTree = "<group>"; };
 		7D2412D11BECB06B007AA2F4 /* MTCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCategory.m; sourceTree = "<group>"; };
+		7D2751C51BF199FB00FFCB76 /* MTCenterLineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCenterLineLabel.h; sourceTree = "<group>"; };
+		7D2751C61BF199FB00FFCB76 /* MTCenterLineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCenterLineLabel.m; sourceTree = "<group>"; };
 		7D7AC7CA1BECB19D00B52B30 /* MTHomeDropdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeDropdown.h; sourceTree = "<group>"; };
 		7D7AC7CB1BECB19D00B52B30 /* MTHomeDropdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdown.m; sourceTree = "<group>"; };
 		7D7AC7CC1BECB19D00B52B30 /* MTHomeDropdown.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTHomeDropdown.xib; sourceTree = "<group>"; };
@@ -537,6 +540,8 @@
 				7DC3F7971BF0AAD600D00DCF /* MTDealCell.h */,
 				7DC3F7981BF0AAD600D00DCF /* MTDealCell.m */,
 				7DC3F7991BF0AAD600D00DCF /* MTDealCell.xib */,
+				7D2751C51BF199FB00FFCB76 /* MTCenterLineLabel.h */,
+				7D2751C61BF199FB00FFCB76 /* MTCenterLineLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 				7D2412851BECA2E4007AA2F4 /* UIView+Extension.m in Sources */,
 				7D2412CA1BECAE25007AA2F4 /* MTHomeDropdownSubCell.m in Sources */,
 				7D2412C01BECA969007AA2F4 /* MTHomeTopItem.m in Sources */,
+				7D2751C71BF199FB00FFCB76 /* MTCenterLineLabel.m in Sources */,
 				7DC3F75A1BF0995700D00DCF /* MTDeal.m in Sources */,
 				7DC3F7821BF09F6400D00DCF /* MKAnnotationView+WebCache.m in Sources */,
 				7DF340BF1BEED9280015B9A6 /* MTRegionViewController.m in Sources */,

@@ -23,6 +23,9 @@
 #import "MTDeal.h"
 #import "MJExtension.h"
 #import "MTDealCell.h"
+#import "MJRefresh.h"
+#import "MBProgressHUD+MJ.h"
+#import "Masonry.h"
 
 @interface MTHomeViewController ()<DPRequestDelegate>
 /** 分类item */
@@ -50,6 +53,17 @@
 
 /** 所有的团购数据 */
 @property (nonatomic, strong) NSMutableArray *deals;
+/** 记录当前页码 */
+@property (nonatomic, assign) NSInteger currentPage;
+
+/** 最后一个请求 */
+@property (nonatomic, weak) DPRequest *lastRequest;
+
+@property (nonatomic, weak) UIImageView *noDataView;
+
+/** 总数 */
+@property (nonatomic, assign) NSInteger totalCount;
+
 
 @end
 
@@ -61,6 +75,20 @@
         _deals = [[NSMutableArray alloc] init];
     }
     return _deals;
+}
+
+- (UIImageView *)noDataView {
+    if (!_noDataView) {
+        // 添加一个"没有数据"的提醒
+        UIImageView *noDataView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_deals_empty"]];
+        [self.view addSubview:noDataView];
+        [noDataView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view.mas_centerX);
+            make.centerY.equalTo(self.view.mas_centerY);
+        }];
+        self.noDataView = noDataView;
+    }
+    return _noDataView;
 }
 
 static NSString *const reuseIdentifier = @"deal";
@@ -81,6 +109,11 @@ static NSString *const reuseIdentifier = @"deal";
     
     // Register cell classes
     [self.collectionView registerNib:[UINib nibWithNibName:@"MTDealCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+    self.collectionView.alwaysBounceVertical = YES;
+    
+    // 添加上拉刷新
+    [self.collectionView addFooterWithTarget:self action:@selector(loadMoreDeals)];
+    [self.collectionView addHeaderWithTarget:self action:@selector(loadNewDeals)];
     
     // 监听城市改变
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
@@ -129,7 +162,7 @@ static NSString *const reuseIdentifier = @"deal";
     [topItem setSubtitle:nil];
     
     // 2.刷新表格数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
     
 }
 
@@ -157,7 +190,7 @@ static NSString *const reuseIdentifier = @"deal";
     [self.categoryPopover dismissPopoverAnimated:YES];
     
     // 3.刷新表格数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
 }
 
 - (void)regionDidChange:(NSNotification *)notification {
@@ -183,7 +216,7 @@ static NSString *const reuseIdentifier = @"deal";
     [self.regionPopover dismissPopoverAnimated:YES];
     
     // 3.刷新表格数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
 }
 
 - (void)sortDidChange:(NSNotification *)notification {
@@ -197,11 +230,11 @@ static NSString *const reuseIdentifier = @"deal";
     [self.sortPopover dismissPopoverAnimated:YES];
     
     // 3.刷新表格数据
-    [self loadNewDeals];
+    [self.collectionView headerBeginRefreshing];
 }
 
 #pragma mark - 跟服务器交互
-- (void)loadNewDeals {
+- (void)loadDeals {
     DPAPI *api = [[DPAPI alloc] init];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     // 城市
@@ -220,27 +253,63 @@ static NSString *const reuseIdentifier = @"deal";
     if (self.selectedSort) {
         params[@"sort"] = @(self.selectedSort.value);
     }
-    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     
-    MTLog(@"请求参数:%@", params);
+    // 页码
+    params[@"page"] = @(self.currentPage);
+    self.lastRequest = [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     
+    
+}
+
+- (void)loadMoreDeals {
+    self.currentPage++;
+    
+    [self loadDeals];
+}
+
+- (void)loadNewDeals {
+    self.currentPage = 1;
+    
+    [self loadDeals];
 }
 
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {
+    if (request != self.lastRequest) return;
+    self.totalCount = [result[@"total_count"] integerValue];
+    
     // 1.取出团购的字典数组
     NSArray *newDeals = [MTDeal objectArrayWithKeyValuesArray:result[@"deals"]];
-    [self.deals removeAllObjects];
+    if (self.currentPage == 1) { // 清除之前的旧数据
+        [self.deals removeAllObjects];
+    }
+    
     [self.deals addObjectsFromArray:newDeals];
     
     // 2.刷新表格
     [self.collectionView reloadData];
     
+    // 3.结束上拉加载
+    [self.collectionView headerEndRefreshing];
+    [self.collectionView footerEndRefreshing];
+    
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {
-    MTLog(@"请求失败--%@", error);
+    if (request != self.lastRequest) return;
+    
+    // 1.提醒失败
+    [MBProgressHUD showError:@"网络繁忙,请稍后再试" toView:self.view];
+    
+    // 2.结束刷新
+    [self.collectionView headerEndRefreshing];
+    [self.collectionView footerEndRefreshing];
+    
+    // 3.如果是上拉加载失败了
+    if (self.currentPage > 1) {
+        self.currentPage--;
+    }
 }
 
 #pragma mark - 设置导航栏内容
@@ -258,6 +327,9 @@ static NSString *const reuseIdentifier = @"deal";
     
     // 3.地区
     MTHomeTopItem *regionTopItem = [MTHomeTopItem item];
+    [regionTopItem setTitle:@"深圳 - 全部"];
+    [regionTopItem setSubtitle:nil];
+    self.selectedCityName = @"深圳";
     [regionTopItem addTarget:self action:@selector(districtClick)];
     UIBarButtonItem *regionItem = [[UIBarButtonItem alloc] initWithCustomView:regionTopItem];
     self.regionItem = regionItem;
@@ -320,6 +392,12 @@ static NSString *const reuseIdentifier = @"deal";
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     // 更新cell就计算一遍内边距
     [self viewWillTransitionToSize:CGSizeMake(collectionView.width, 0) withTransitionCoordinator:nil];
+    
+    // 控制尾部刷新控件的显示和隐藏
+    self.collectionView.footerHidden = (self.totalCount == self.deals.count);
+    
+    // 控制"没有数据"的提醒
+    self.noDataView.hidden = (self.deals.count != 0);
     
     return 1;
 }

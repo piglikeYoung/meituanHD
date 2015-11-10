@@ -101,6 +101,23 @@ static NSString *const reuseIdentifier = @"deal";
     [MTNotificationCenter removeObserver:self];
 }
 
+/**
+ 当屏幕旋转,控制器view的尺寸发生改变调用
+ */
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+    // 根据屏幕宽度决定列数
+    int cols = (size.width == 1024) ? 3 : 2;
+    
+    // 根据列数计算内边距
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    CGFloat inset = (size.width - cols * layout.itemSize.width) / (cols + 1);
+    layout.sectionInset = UIEdgeInsetsMake(inset, inset, inset, inset);
+    
+    // 设置每一行之前的间距
+    layout.minimumLineSpacing = inset;
+}
+
 #pragma mark - 监听通知
 - (void)cityDidChange:(NSNotification *)notification
 {
@@ -301,6 +318,9 @@ static NSString *const reuseIdentifier = @"deal";
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    // 更新cell就计算一遍内边距
+    [self viewWillTransitionToSize:CGSizeMake(collectionView.width, 0) withTransitionCoordinator:nil];
+    
     return 1;
 }
 

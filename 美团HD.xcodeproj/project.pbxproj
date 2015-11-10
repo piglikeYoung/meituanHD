@@ -57,6 +57,7 @@
 		7D2751E71BF1D77000FFCB76 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2751E31BF1D77000FFCB76 /* MBProgressHUD+MJ.m */; };
 		7D2751E81BF1D77000FFCB76 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7D2751E41BF1D77000FFCB76 /* MBProgressHUD.bundle */; };
 		7D2751E91BF1D77000FFCB76 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2751E61BF1D77000FFCB76 /* MBProgressHUD.m */; };
+		7D2751EC1BF1EE4C00FFCB76 /* MTDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D2751EB1BF1EE4C00FFCB76 /* MTDealsViewController.m */; };
 		7D7AC7CD1BECB19D00B52B30 /* MTHomeDropdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7AC7CB1BECB19D00B52B30 /* MTHomeDropdown.m */; };
 		7D7AC7CE1BECB19D00B52B30 /* MTHomeDropdown.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7CC1BECB19D00B52B30 /* MTHomeDropdown.xib */; };
 		7D7AC7D41BECB39B00B52B30 /* categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D01BECB39A00B52B30 /* categories.plist */; };
@@ -220,6 +221,8 @@
 		7D2751E41BF1D77000FFCB76 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		7D2751E51BF1D77000FFCB76 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7D2751E61BF1D77000FFCB76 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		7D2751EA1BF1EE4C00FFCB76 /* MTDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDealsViewController.h; sourceTree = "<group>"; };
+		7D2751EB1BF1EE4C00FFCB76 /* MTDealsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDealsViewController.m; sourceTree = "<group>"; };
 		7D7AC7CA1BECB19D00B52B30 /* MTHomeDropdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeDropdown.h; sourceTree = "<group>"; };
 		7D7AC7CB1BECB19D00B52B30 /* MTHomeDropdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdown.m; sourceTree = "<group>"; };
 		7D7AC7CC1BECB19D00B52B30 /* MTHomeDropdown.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTHomeDropdown.xib; sourceTree = "<group>"; };
@@ -429,6 +432,8 @@
 			children = (
 				7D24124B1BECA2E4007AA2F4 /* MTNavigationController.h */,
 				7D24124C1BECA2E4007AA2F4 /* MTNavigationController.m */,
+				7D2751EA1BF1EE4C00FFCB76 /* MTDealsViewController.h */,
+				7D2751EB1BF1EE4C00FFCB76 /* MTDealsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -902,6 +907,7 @@
 				7D2751E91BF1D77000FFCB76 /* MBProgressHUD.m in Sources */,
 				7D2412101BEC9D85007AA2F4 /* main.m in Sources */,
 				7DC3F7841BF09F6400D00DCF /* SDImageCache.m in Sources */,
+				7D2751EC1BF1EE4C00FFCB76 /* MTDealsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

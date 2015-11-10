@@ -6,8 +6,8 @@
 //  Copyright © 2015年 pikeYoung. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MTDealsViewController.h"
 
-@interface MTHomeViewController : UICollectionViewController
+@interface MTHomeViewController : MTDealsViewController
 
 @end

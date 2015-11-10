@@ -20,6 +20,9 @@
 #import "MTCategory.h"
 #import "MTRegion.h"
 #import "DPAPI.h"
+#import "MTDeal.h"
+#import "MJExtension.h"
+#import "MTDealCell.h"
 
 @interface MTHomeViewController ()<DPRequestDelegate>
 /** 分类item */
@@ -45,14 +48,27 @@
 /** 排序popover */
 @property (nonatomic, strong) UIPopoverController *sortPopover;
 
+/** 所有的团购数据 */
+@property (nonatomic, strong) NSMutableArray *deals;
+
 @end
 
 @implementation MTHomeViewController
 
-static NSString *const reuseIdentifier = @"Cell";
+- (NSMutableArray *)deals
+{
+    if (!_deals) {
+        _deals = [[NSMutableArray alloc] init];
+    }
+    return _deals;
+}
+
+static NSString *const reuseIdentifier = @"deal";
 
 - (instancetype)init{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    // cell的大小
+    layout.itemSize = CGSizeMake(305, 305);
     return [self initWithCollectionViewLayout:layout];
 
 }
@@ -64,7 +80,7 @@ static NSString *const reuseIdentifier = @"Cell";
     self.collectionView.backgroundColor = MTGlobalBg;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"MTDealCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
     // 监听城市改变
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
@@ -78,6 +94,7 @@ static NSString *const reuseIdentifier = @"Cell";
     // 设置导航栏内容
     [self setupLeftNav];
     [self setupRightNav];
+
 }
 
 - (void)dealloc {
@@ -194,7 +211,14 @@ static NSString *const reuseIdentifier = @"Cell";
 
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {
-    MTLog(@"请求成功--%@", result);
+    // 1.取出团购的字典数组
+    NSArray *newDeals = [MTDeal objectArrayWithKeyValuesArray:result[@"deals"]];
+    [self.deals removeAllObjects];
+    [self.deals addObjectsFromArray:newDeals];
+    
+    // 2.刷新表格
+    [self.collectionView reloadData];
+    
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
@@ -273,6 +297,23 @@ static NSString *const reuseIdentifier = @"Cell";
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTSortViewController alloc] init]];
     [popover presentPopoverFromBarButtonItem:self.sortItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     self.sortPopover = popover;
+}
+
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.deals.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MTDealCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    cell.deal = self.deals[indexPath.item];
+    
+    return cell;
 }
 
 

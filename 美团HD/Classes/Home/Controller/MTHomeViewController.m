@@ -21,6 +21,8 @@
 #import "MTRegion.h"
 #import "DPAPI.h"
 #import "MJRefresh.h"
+#import "MTNavigationController.h"
+#import "MTSearchViewController.h"
 
 
 @interface MTHomeViewController ()<DPRequestDelegate>
@@ -199,12 +201,19 @@
     UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highImage:@"icon_map_highlighted"];
     mapItem.customView.width = 60;
     
-    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highImage:@"icon_search_highlighted"];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:self action:@selector(search) image:@"icon_search" highImage:@"icon_search_highlighted"];
     searchItem.customView.width = 60;
     self.navigationItem.rightBarButtonItems = @[mapItem, searchItem];
 }
 
 #pragma mark - 顶部item点击方法
+- (void)search {
+    MTSearchViewController *searchVc = [[MTSearchViewController alloc] init];
+    searchVc.selectedCityName = self.selectedCityName;
+    
+    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:searchVc];
+    [self presentViewController:nav animated:YES completion:nil];
+}
 - (void)categoryClick
 {
     // 显示分类菜单

@@ -7,6 +7,7 @@
 //
 
 #import "MTNavigationController.h"
+#import "MTConst.h"
 
 @interface MTNavigationController ()
 
@@ -18,6 +19,10 @@
 {
     UINavigationBar *bar = [UINavigationBar appearance];
     [bar setBackgroundImage:[UIImage imageNamed:@"bg_navigationBar_normal"] forBarMetrics:UIBarMetricsDefault];
+    
+    UIBarButtonItem *item = [UIBarButtonItem appearance];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : MTColor(21, 188, 173)} forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} forState:UIControlStateDisabled];
 }
 
 - (void)viewDidLoad {

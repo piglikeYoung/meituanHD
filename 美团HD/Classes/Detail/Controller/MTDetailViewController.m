@@ -9,10 +9,22 @@
 #import "MTDetailViewController.h"
 #import "MTDeal.h"
 #import "MTConst.h"
+#import "DPAPI.h"
+#import "MTDealTool.h"
+#import "MJExtension.h"
+#import "MBProgressHUD+MJ.h"
+#import "MTRestrictions.h"
 
-@interface MTDetailViewController ()<UIWebViewDelegate>
+@interface MTDetailViewController ()<UIWebViewDelegate, DPRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (weak, nonatomic) IBOutlet UIButton *collectButton;
+@property (weak, nonatomic) IBOutlet UIButton *refundableAnyTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *refundableExpireButton;
+@property (weak, nonatomic) IBOutlet UIButton *deadTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *soldNumber;
 
 @end
 
@@ -26,6 +38,37 @@
     self.webView.hidden = YES;
     self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.deal.deal_h5_url]]];
+    
+    // 设置基本信息
+    self.titleLabel.text = self.deal.title;
+    self.descLabel.text = self.deal.desc;
+    [self.soldNumber setTitle:[NSString stringWithFormat:@"已售出%d", self.deal.purchase_count] forState:UIControlStateNormal];
+    
+    // 设置剩余时间
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    NSDate *dead = [fmt dateFromString:self.deal.purchase_deadline];
+    // 追加1天
+    dead = [dead dateByAddingTimeInterval:24 * 60 * 60];
+    NSDate *now = [NSDate date];
+    NSCalendarUnit unit = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *cmps = [[NSCalendar currentCalendar] components:unit fromDate:now toDate:dead options:0];
+    if (cmps.day > 365) {
+        [self.deadTimeButton setTitle:@"一年内不过期" forState:UIControlStateNormal];
+    } else {
+        [self.deadTimeButton setTitle:[NSString stringWithFormat:@"%d天%d小时%d分钟", cmps.day, cmps.hour, cmps.minute] forState:UIControlStateNormal];
+    }
+    
+    
+    // 发送请求获得更详细的团购数据
+    DPAPI *api = [[DPAPI alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    // 页码
+    params[@"deal_id"] = self.deal.deal_id;
+    [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    
+    // 设置收藏状态
+//    self.collectButton.selected = [MTDealTool isCollected:self.deal];
 }
 
 /**
@@ -33,6 +76,36 @@
  */
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskLandscape;
+}
+
+- (IBAction)back:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)buy {
+    
+}
+
+- (IBAction)share {
+    
+}
+
+- (IBAction)collect {
+    
+}
+
+#pragma mark - DPRequestDelegate
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
+{
+    self.deal = [MTDeal objectWithKeyValues:[result[@"deals"] firstObject]];
+    // 设置退款信息
+    self.refundableAnyTimeButton.selected = self.deal.restrictions.is_refundable;
+    self.refundableExpireButton.selected = self.deal.restrictions.is_refundable;
+}
+
+- (void)request:(DPRequest *)request didFailWithError:(NSError *)error
+{
+    [MBProgressHUD showError:@"网络繁忙,请稍后再试" toView:self.view];
 }
 
 #pragma mark - UIWebViewDelegate

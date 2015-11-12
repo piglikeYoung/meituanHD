@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D014B691BF4295900615ACA /* MTRestrictions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D014B681BF4295900615ACA /* MTRestrictions.m */; };
+		7D014B6C1BF42A8D00615ACA /* MTDealTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D014B6B1BF42A8D00615ACA /* MTDealTool.m */; };
 		7D16B6681BF2E22000F7D803 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D16B6651BF2E22000F7D803 /* AwesomeMenu.m */; };
 		7D16B6691BF2E22000F7D803 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D16B6671BF2E22000F7D803 /* AwesomeMenuItem.m */; };
 		7D16B6701BF2EF3400F7D803 /* MTRecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D16B66F1BF2EF3400F7D803 /* MTRecentViewController.m */; };
@@ -124,6 +126,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D014B671BF4295900615ACA /* MTRestrictions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRestrictions.h; sourceTree = "<group>"; };
+		7D014B681BF4295900615ACA /* MTRestrictions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRestrictions.m; sourceTree = "<group>"; };
+		7D014B6A1BF42A8D00615ACA /* MTDealTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDealTool.h; sourceTree = "<group>"; };
+		7D014B6B1BF42A8D00615ACA /* MTDealTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDealTool.m; sourceTree = "<group>"; };
 		7D16B6641BF2E22000F7D803 /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
 		7D16B6651BF2E22000F7D803 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
 		7D16B6661BF2E22000F7D803 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
@@ -650,6 +656,8 @@
 				7DF340CB1BEF60C10015B9A6 /* MTSort.m */,
 				7DC3F7581BF0995700D00DCF /* MTDeal.h */,
 				7DC3F7591BF0995700D00DCF /* MTDeal.m */,
+				7D014B671BF4295900615ACA /* MTRestrictions.h */,
+				7D014B681BF4295900615ACA /* MTRestrictions.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -797,6 +805,8 @@
 			children = (
 				7DF340C71BEF48FC0015B9A6 /* MTMetaTool.h */,
 				7DF340C81BEF48FC0015B9A6 /* MTMetaTool.m */,
+				7D014B6A1BF42A8D00615ACA /* MTDealTool.h */,
+				7D014B6B1BF42A8D00615ACA /* MTDealTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -990,6 +1000,8 @@
 				7DC3F7551BF07D6B00D00DCF /* DPRequest.m in Sources */,
 				7DC3F78B1BF09F6400D00DCF /* UIButton+WebCache.m in Sources */,
 				7DC3F7851BF09F6400D00DCF /* SDWebImageCompat.m in Sources */,
+				7D014B6C1BF42A8D00615ACA /* MTDealTool.m in Sources */,
+				7D014B691BF4295900615ACA /* MTRestrictions.m in Sources */,
 				7D2751F11BF1F34F00FFCB76 /* MTSearchViewController.m in Sources */,
 				7D24129A1BECA2E4007AA2F4 /* NSObject+MJMember.m in Sources */,
 				7D2412C71BECAD50007AA2F4 /* MTHomeDropdownMainCell.m in Sources */,

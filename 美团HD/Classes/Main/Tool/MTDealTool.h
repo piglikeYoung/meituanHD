@@ -14,8 +14,8 @@
 /**
  *  返回第page页的收藏团购数据:page从1开始
  */
-+ (NSArray *)collectDeals:(int)page;
-+ (int)collectDealsCount;
++ (NSArray *)collectDeals:(NSInteger)page;
++ (NSInteger)collectDealsCount;
 /**
  *  收藏一个团购
  */

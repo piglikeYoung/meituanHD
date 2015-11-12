@@ -68,7 +68,7 @@
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
     
     // 设置收藏状态
-//    self.collectButton.selected = [MTDealTool isCollected:self.deal];
+    self.collectButton.selected = [MTDealTool isCollected:self.deal];
 }
 
 /**
@@ -91,6 +91,24 @@
 }
 
 - (IBAction)collect {
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    info[MTCollectDealKey] = self.deal;
+    
+    if (self.collectButton.isSelected) { // 取消收藏
+        [MTDealTool removeCollectDeal:self.deal];
+        [MBProgressHUD showSuccess:@"取消收藏成功" toView:self.view];
+        info[MTIsCollectKey] = @NO;
+    } else { // 收藏
+        [MTDealTool addCollectDeal:self.deal];
+        [MBProgressHUD showSuccess:@"收藏成功" toView:self.view];
+        info[MTIsCollectKey] = @YES;
+    }
+    
+    // 按钮的选中取反
+    self.collectButton.selected = !self.collectButton.isSelected;
+    
+    // 发出通知
+    [MTNotificationCenter postNotificationName:MTCollectStateDidChangeNotification object:nil userInfo:info];
     
 }
 

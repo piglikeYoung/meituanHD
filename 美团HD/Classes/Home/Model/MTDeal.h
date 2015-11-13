@@ -43,4 +43,7 @@
 /** 是否被勾选了 */
 @property (nonatomic, assign, getter=isChecking) BOOL checking;
 
+@property (nonatomic, strong) NSArray *businesses;
+@property (nonatomic, strong) NSArray *categories;
+
 @end

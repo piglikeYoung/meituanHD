@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class MTCategory, MTDeal;
+
 @interface MTMetaTool : NSObject
 /**
  *  返回344个城市
@@ -26,5 +28,11 @@
  *  返回所有的排序数据
  */
 + (NSArray *)sorts;
+
+/**
+ *  返回某个团购的类别
+ *
+ */
++ (MTCategory *)categoryWithDeal:(MTDeal *)deal;
 
 @end

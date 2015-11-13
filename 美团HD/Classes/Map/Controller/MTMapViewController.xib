@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MTMapViewController">
+            <connections>
+                <outlet property="mapView" destination="beR-hi-3sE" id="wZj-K9-vHv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="beR-hi-3sE">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="zpZ-gc-8xx"/>
+                    </connections>
+                </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nv-el-Lvh" userLabel="location">
+                    <rect key="frame" x="20" y="510" width="70" height="70"/>
+                    <animations/>
+                    <state key="normal" image="icon_map_location"/>
+                    <state key="highlighted" image="icon_map_location_highlighted"/>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="8nv-el-Lvh" secondAttribute="bottom" constant="20" id="80e-bV-RXj"/>
+                <constraint firstItem="beR-hi-3sE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hgm-VI-lD2"/>
+                <constraint firstAttribute="trailing" secondItem="beR-hi-3sE" secondAttribute="trailing" id="Tii-cu-BYs"/>
+                <constraint firstAttribute="bottom" secondItem="beR-hi-3sE" secondAttribute="bottom" id="WrV-22-sbs"/>
+                <constraint firstItem="8nv-el-Lvh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="to7-bG-fb0"/>
+                <constraint firstItem="beR-hi-3sE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xV1-ra-6PE"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_map_location" width="70" height="70"/>
+        <image name="icon_map_location_highlighted" width="70" height="70"/>
+    </resources>
+</document>

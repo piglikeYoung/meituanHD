@@ -79,6 +79,10 @@
 		7D7AC7D51BECB39B00B52B30 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D11BECB39A00B52B30 /* cities.plist */; };
 		7D7AC7D61BECB39B00B52B30 /* cityGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D21BECB39A00B52B30 /* cityGroups.plist */; };
 		7D7AC7D71BECB39B00B52B30 /* sorts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7AC7D31BECB39A00B52B30 /* sorts.plist */; };
+		7D87DEC11BF590980051A02D /* MTDealAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87DEC01BF590980051A02D /* MTDealAnnotation.m */; };
+		7D87DEC51BF591620051A02D /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87DEC31BF591620051A02D /* MTMapViewController.m */; };
+		7D87DEC61BF591620051A02D /* MTMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D87DEC41BF591620051A02D /* MTMapViewController.xib */; };
+		7D87DEC91BF5BC4D0051A02D /* MTBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87DEC81BF5BC4D0051A02D /* MTBusiness.m */; };
 		7DACCD5B1BEE03FB0045808B /* MTCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD561BEE03FB0045808B /* MTCity.m */; };
 		7DACCD5C1BEE03FB0045808B /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD581BEE03FB0045808B /* MTCityGroup.m */; };
 		7DACCD5D1BEE03FB0045808B /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD5A1BEE03FB0045808B /* MTRegion.m */; };
@@ -274,6 +278,13 @@
 		7D7AC7D11BECB39A00B52B30 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
 		7D7AC7D21BECB39A00B52B30 /* cityGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityGroups.plist; sourceTree = "<group>"; };
 		7D7AC7D31BECB39A00B52B30 /* sorts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sorts.plist; sourceTree = "<group>"; };
+		7D87DEBF1BF590980051A02D /* MTDealAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDealAnnotation.h; sourceTree = "<group>"; };
+		7D87DEC01BF590980051A02D /* MTDealAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDealAnnotation.m; sourceTree = "<group>"; };
+		7D87DEC21BF591620051A02D /* MTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMapViewController.h; sourceTree = "<group>"; };
+		7D87DEC31BF591620051A02D /* MTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMapViewController.m; sourceTree = "<group>"; };
+		7D87DEC41BF591620051A02D /* MTMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTMapViewController.xib; sourceTree = "<group>"; };
+		7D87DEC71BF5BC4D0051A02D /* MTBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBusiness.h; sourceTree = "<group>"; };
+		7D87DEC81BF5BC4D0051A02D /* MTBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBusiness.m; sourceTree = "<group>"; };
 		7DACCD551BEE03FB0045808B /* MTCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCity.h; sourceTree = "<group>"; };
 		7DACCD561BEE03FB0045808B /* MTCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCity.m; sourceTree = "<group>"; };
 		7DACCD571BEE03FB0045808B /* MTCityGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityGroup.h; sourceTree = "<group>"; };
@@ -524,6 +535,7 @@
 		7D2412411BECA0CD007AA2F4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7D87DEB91BF590310051A02D /* Map(地图) */,
 				7D16B6741BF3270200F7D803 /* Detail(详情) */,
 				7D16B66B1BF2EE9100F7D803 /* Recent(最近) */,
 				7D16B66A1BF2EE7700F7D803 /* Collect(收藏) */,
@@ -707,6 +719,8 @@
 				7DC3F7591BF0995700D00DCF /* MTDeal.m */,
 				7D014B671BF4295900615ACA /* MTRestrictions.h */,
 				7D014B681BF4295900615ACA /* MTRestrictions.m */,
+				7D87DEC71BF5BC4D0051A02D /* MTBusiness.h */,
+				7D87DEC81BF5BC4D0051A02D /* MTBusiness.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -795,6 +809,35 @@
 				7D7AC7D31BECB39A00B52B30 /* sorts.plist */,
 			);
 			path = Plist;
+			sourceTree = "<group>";
+		};
+		7D87DEB91BF590310051A02D /* Map(地图) */ = {
+			isa = PBXGroup;
+			children = (
+				7D87DEBB1BF590610051A02D /* Controller */,
+				7D87DEBA1BF590470051A02D /* Model */,
+			);
+			name = "Map(地图)";
+			path = Map;
+			sourceTree = "<group>";
+		};
+		7D87DEBA1BF590470051A02D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D87DEBF1BF590980051A02D /* MTDealAnnotation.h */,
+				7D87DEC01BF590980051A02D /* MTDealAnnotation.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D87DEBB1BF590610051A02D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7D87DEC21BF591620051A02D /* MTMapViewController.h */,
+				7D87DEC31BF591620051A02D /* MTMapViewController.m */,
+				7D87DEC41BF591620051A02D /* MTMapViewController.xib */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		7DC3F74E1BF07D6B00D00DCF /* dianpingapi */ = {
@@ -968,6 +1011,7 @@
 				7D7AC7D61BECB39B00B52B30 /* cityGroups.plist in Resources */,
 				7D7AC7D41BECB39B00B52B30 /* categories.plist in Resources */,
 				7D24121B1BEC9D85007AA2F4 /* Assets.xcassets in Resources */,
+				7D87DEC61BF591620051A02D /* MTMapViewController.xib in Resources */,
 				7D7AC7D71BECB39B00B52B30 /* sorts.plist in Resources */,
 				7D16B67A1BF3275C00F7D803 /* MTDetailViewController.xib in Resources */,
 				7D2751D91BF1CADA00FFCB76 /* MJRefresh.bundle in Resources */,
@@ -1041,6 +1085,7 @@
 				7DF340BF1BEED9280015B9A6 /* MTRegionViewController.m in Sources */,
 				7D2751DE1BF1CADA00FFCB76 /* UIScrollView+MJExtension.m in Sources */,
 				7DACCD5C1BEE03FB0045808B /* MTCityGroup.m in Sources */,
+				7D87DEC91BF5BC4D0051A02D /* MTBusiness.m in Sources */,
 				7D24128C1BECA2E4007AA2F4 /* MASViewConstraint.m in Sources */,
 				7D2412C41BECACD2007AA2F4 /* MTCategoryViewController.m in Sources */,
 				7D2751E71BF1D77000FFCB76 /* MBProgressHUD+MJ.m in Sources */,
@@ -1058,8 +1103,10 @@
 				7D2412861BECA2E4007AA2F4 /* MTNavigationController.m in Sources */,
 				7D2412D21BECB06B007AA2F4 /* MTCategory.m in Sources */,
 				7DACCD5B1BEE03FB0045808B /* MTCity.m in Sources */,
+				7D87DEC51BF591620051A02D /* MTMapViewController.m in Sources */,
 				7D2412991BECA2E4007AA2F4 /* NSObject+MJKeyValue.m in Sources */,
 				7DC3F7871BF09F6400D00DCF /* SDWebImageDownloader.m in Sources */,
+				7D87DEC11BF590980051A02D /* MTDealAnnotation.m in Sources */,
 				7D24128F1BECA2E4007AA2F4 /* View+MASAdditions.m in Sources */,
 				7D2412871BECA2E4007AA2F4 /* MASCompositeConstraint.m in Sources */,
 				7DC3F78C1BF09F6400D00DCF /* UIImage+GIF.m in Sources */,

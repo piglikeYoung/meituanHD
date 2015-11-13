@@ -26,7 +26,7 @@
 #import "MTCollectViewController.h"
 #import "MTRecentViewController.h"
 #import "Masonry.h"
-
+#import "MTMapViewController.h"
 
 @interface MTHomeViewController ()<AwesomeMenuDelegate>
 /** 分类item */
@@ -278,7 +278,7 @@
 
 - (void)setupRightNav {
 
-    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highImage:@"icon_map_highlighted"];
+    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:self action:@selector(map) image:@"icon_map" highImage:@"icon_map_highlighted"];
     mapItem.customView.width = 60;
     
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:self action:@selector(search) image:@"icon_search" highImage:@"icon_search_highlighted"];
@@ -287,6 +287,12 @@
 }
 
 #pragma mark - 顶部item点击方法
+- (void)map {
+    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:[[MTMapViewController alloc] init]];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+
 - (void)search {
     MTSearchViewController *searchVc = [[MTSearchViewController alloc] init];
     searchVc.selectedCityName = self.selectedCityName;

@@ -83,6 +83,7 @@
 		7D87DEC51BF591620051A02D /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87DEC31BF591620051A02D /* MTMapViewController.m */; };
 		7D87DEC61BF591620051A02D /* MTMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D87DEC41BF591620051A02D /* MTMapViewController.xib */; };
 		7D87DEC91BF5BC4D0051A02D /* MTBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87DEC81BF5BC4D0051A02D /* MTBusiness.m */; };
+		7D87DECC1BF5ED810051A02D /* MTHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D87DECB1BF5ED810051A02D /* MTHttpTool.m */; };
 		7DACCD5B1BEE03FB0045808B /* MTCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD561BEE03FB0045808B /* MTCity.m */; };
 		7DACCD5C1BEE03FB0045808B /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD581BEE03FB0045808B /* MTCityGroup.m */; };
 		7DACCD5D1BEE03FB0045808B /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DACCD5A1BEE03FB0045808B /* MTRegion.m */; };
@@ -285,6 +286,8 @@
 		7D87DEC41BF591620051A02D /* MTMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTMapViewController.xib; sourceTree = "<group>"; };
 		7D87DEC71BF5BC4D0051A02D /* MTBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBusiness.h; sourceTree = "<group>"; };
 		7D87DEC81BF5BC4D0051A02D /* MTBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBusiness.m; sourceTree = "<group>"; };
+		7D87DECA1BF5ED810051A02D /* MTHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHttpTool.h; sourceTree = "<group>"; };
+		7D87DECB1BF5ED810051A02D /* MTHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHttpTool.m; sourceTree = "<group>"; };
 		7DACCD551BEE03FB0045808B /* MTCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCity.h; sourceTree = "<group>"; };
 		7DACCD561BEE03FB0045808B /* MTCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCity.m; sourceTree = "<group>"; };
 		7DACCD571BEE03FB0045808B /* MTCityGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityGroup.h; sourceTree = "<group>"; };
@@ -402,6 +405,8 @@
 			children = (
 				7D014B811BF43A7F00615ACA /* MTDealTool.h */,
 				7D014B821BF43A7F00615ACA /* MTDealTool.m */,
+				7D87DECA1BF5ED810051A02D /* MTHttpTool.h */,
+				7D87DECB1BF5ED810051A02D /* MTHttpTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1080,6 +1085,7 @@
 				7D2412CA1BECAE25007AA2F4 /* MTHomeDropdownSubCell.m in Sources */,
 				7D2412C01BECA969007AA2F4 /* MTHomeTopItem.m in Sources */,
 				7D2751C71BF199FB00FFCB76 /* MTCenterLineLabel.m in Sources */,
+				7D87DECC1BF5ED810051A02D /* MTHttpTool.m in Sources */,
 				7DC3F75A1BF0995700D00DCF /* MTDeal.m in Sources */,
 				7DC3F7821BF09F6400D00DCF /* MKAnnotationView+WebCache.m in Sources */,
 				7DF340BF1BEED9280015B9A6 /* MTRegionViewController.m in Sources */,

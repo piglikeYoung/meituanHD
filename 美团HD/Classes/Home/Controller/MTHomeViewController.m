@@ -60,9 +60,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupNotifications];
-    
-    
     // 设置导航栏内容
     [self setupLeftNav];
     [self setupRightNav];
@@ -70,6 +67,20 @@
     // 创建awesomemenu
     [self setupAwesomeMenu];
 
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [MTNotificationCenter removeObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self setupNotifications];
 }
 
 - (void)setupNotifications {

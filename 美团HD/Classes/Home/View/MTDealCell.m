@@ -23,6 +23,10 @@
  */
 @property (weak, nonatomic) IBOutlet UIImageView *dealNewView;
 
+@property (weak, nonatomic) IBOutlet UIButton *cover;
+@property (weak, nonatomic) IBOutlet UIImageView *checkView;
+
+
 @end
 
 @implementation MTDealCell
@@ -64,6 +68,12 @@
     NSString *nowStr = [fmt stringFromDate:[NSDate date]];
     // 隐藏: 发布日期 < 今天
     self.dealNewView.hidden = ([deal.publish_date compare:nowStr] == NSOrderedAscending);
+    
+    // 根据模型属性来控制cover的显示和隐藏
+    self.cover.hidden = !deal.isEditting;
+    
+    // 根据模型属性来控制打钩显示和隐藏
+    self.checkView.hidden = !deal.isChecking;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -71,6 +81,18 @@
 //        [[UIImage imageNamed:@"bg_dealcell"] drawAsPatternInRect:rect];
     // 拉伸
     [[UIImage imageNamed:@"bg_dealcell"] drawInRect:rect];
+}
+
+
+- (IBAction)coverClick:(UIButton *)sender {
+    // 设置模型
+    self.deal.checking = !self.deal.isChecking;
+    // 直接修改状态
+    self.checkView.hidden = !self.checkView.isHidden;
+    
+    if ([self.delegate respondsToSelector:@selector(dealCellCheckingStateDidChange:)]) {
+        [self.delegate dealCellCheckingStateDidChange:self];
+    }
 }
 
 @end

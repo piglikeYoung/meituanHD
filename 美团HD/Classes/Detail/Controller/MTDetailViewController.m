@@ -112,6 +112,10 @@
     
 }
 
+- (void)dealloc {
+    [MTNotificationCenter removeObserver:self];
+}
+
 #pragma mark - DPRequestDelegate
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {

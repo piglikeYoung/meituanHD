@@ -15,12 +15,13 @@
 #import "MTDealCell.h"
 #import "UIView+Extension.h"
 #import "MTDetailViewController.h"
+#import "MTDeal.h"
 
 #define MTString(str) [NSString stringWithFormat:@"  %@  ", str]
 NSString *const MTDone = @"完成";
 NSString *const MTEdit = @"编辑";
 
-@interface MTCollectViewController ()
+@interface MTCollectViewController ()<MTDealCellDelegate>
 @property (nonatomic, weak) UIImageView *noDataView;
 @property (nonatomic, strong) NSMutableArray *deals;
 @property (nonatomic, assign) int currentPage;
@@ -36,7 +37,7 @@ NSString *const MTEdit = @"编辑";
 - (UIBarButtonItem *)backItem
 {
     if (!_backItem) {
-        self.backItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"icon_back" highImage:@"icon_back_highlighted"];
+        _backItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"icon_back" highImage:@"icon_back_highlighted"];
     }
     return _backItem;
 }
@@ -44,7 +45,7 @@ NSString *const MTEdit = @"编辑";
 - (UIBarButtonItem *)selectAllItem
 {
     if (!_selectAllItem) {
-        self.selectAllItem = [[UIBarButtonItem alloc] initWithTitle:MTString(@"全选") style:UIBarButtonItemStyleDone target:self action:@selector(selectAll)];
+        _selectAllItem = [[UIBarButtonItem alloc] initWithTitle:MTString(@"全选") style:UIBarButtonItemStyleDone target:self action:@selector(selectAll)];
     }
     return _selectAllItem;
 }
@@ -52,7 +53,7 @@ NSString *const MTEdit = @"编辑";
 - (UIBarButtonItem *)unselectAllItem
 {
     if (!_unselectAllItem) {
-        self.unselectAllItem = [[UIBarButtonItem alloc] initWithTitle:MTString(@"全不选") style:UIBarButtonItemStyleDone target:self action:@selector(unselectAll)];
+        _unselectAllItem = [[UIBarButtonItem alloc] initWithTitle:MTString(@"全不选") style:UIBarButtonItemStyleDone target:self action:@selector(unselectAll)];
     }
     return _unselectAllItem;
 }
@@ -60,7 +61,9 @@ NSString *const MTEdit = @"编辑";
 - (UIBarButtonItem *)removeItem
 {
     if (!_removeItem) {
-        self.removeItem = [[UIBarButtonItem alloc] initWithTitle:MTString(@"删除") style:UIBarButtonItemStyleDone target:self action:@selector(remove)];
+        _removeItem = [[UIBarButtonItem alloc] initWithTitle:MTString(@"删除") style:UIBarButtonItemStyleDone target:self action:@selector(remove)];
+        _removeItem.enabled = NO;
+        
     }
     return _removeItem;
 }
@@ -124,6 +127,10 @@ static NSString * const reuseIdentifier = @"deal";
     
 }
 
+- (void)dealloc {
+    [MTNotificationCenter removeObserver:self];
+}
+
 /**
  当屏幕旋转,控制器view的尺寸发生改变调用
  */
@@ -148,10 +155,25 @@ static NSString * const reuseIdentifier = @"deal";
     if ([item.title isEqualToString:MTEdit]) {
         item.title = MTDone;
         self.navigationItem.leftBarButtonItems = @[self.backItem, self.selectAllItem, self.unselectAllItem, self.removeItem];
+        
+        // 进入编辑状态
+        for (MTDeal *deal in self.deals) {
+            deal.editing = YES;
+        }
+        
     } else {
         item.title = MTEdit;
         self.navigationItem.leftBarButtonItems = @[self.backItem];
+
+        // 结束编辑状态
+        for (MTDeal *deal in self.deals) {
+            deal.editing = NO;
+            deal.checking = NO;
+        }
     }
+    
+    // 刷新表格
+    [self.collectionView reloadData];
 }
 
 - (void) loadMoreDeals {
@@ -180,8 +202,70 @@ static NSString * const reuseIdentifier = @"deal";
     [self loadMoreDeals];
 }
 
+/**
+ *  全选
+ */
+- (void) selectAll {
+    for (MTDeal *deal in self.deals) {
+        deal.checking = YES;
+    }
+    
+    [self.collectionView reloadData];
+    
+    self.removeItem.enabled = YES;
+}
+
+/**
+ *  全不选
+ */
+- (void) unselectAll {
+    for (MTDeal *deal in self.deals) {
+        deal.checking = NO;
+    }
+    
+    [self.collectionView reloadData];
+    
+    self.removeItem.enabled = NO;
+}
+
+/**
+ *  删除
+ */
+- (void)remove {
+    
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    for (MTDeal *deal in self.deals) {
+        if (deal.isChecking) {
+            [MTDealTool removeCollectDeal:deal];
+            [tmpArray addObject:deal];
+        }
+    }
+    
+    // 删除所以打钩的模型
+    [self.deals removeObjectsInArray:tmpArray];
+    
+    [self.collectionView reloadData];
+    
+    self.removeItem.enabled = NO;
+}
+
 - (void)back {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - MTDealCellDelegate
+- (void)dealCellCheckingStateDidChange:(MTDealCell *)cell {
+    
+    BOOL hasChecking = NO;
+    for (MTDeal *deal in self.deals) {
+        if (deal.isChecking) {
+            hasChecking = YES;
+            break;
+        }
+    }
+    
+    // 根据有没有打钩的情况,决定删除按钮是否可用
+    self.removeItem.enabled = hasChecking;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -202,7 +286,7 @@ static NSString * const reuseIdentifier = @"deal";
     MTDealCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     cell.deal = self.deals[indexPath.item];
-    
+    cell.delegate = self;
     return cell;
 }
 

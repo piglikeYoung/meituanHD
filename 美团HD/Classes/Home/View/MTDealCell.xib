@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -55,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥108" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbf-WP-ZWY" userLabel="原价" customClass="MTCenterLineLabel">
-                                <rect key="frame" x="59.5" y="80" width="30.5" height="15"/>
+                                <rect key="frame" x="59" y="80" width="30.5" height="15"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="mcx-oU-Pqh"/>
@@ -101,6 +102,25 @@
                             <constraint firstAttribute="height" constant="24" id="j6G-V6-Ljl"/>
                         </constraints>
                     </imageView>
+                    <button hidden="YES" opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAy-Ku-yQo" userLabel="遮盖">
+                        <rect key="frame" x="0.0" y="0.0" width="305" height="305"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="coverClick:" destination="lzm-yk-IEX" eventType="touchUpInside" id="ETP-4e-zF1"/>
+                        </connections>
+                    </button>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_choosed" translatesAutoresizingMaskIntoConstraints="NO" id="i0C-ru-dNo" userLabel="选中标记">
+                        <rect key="frame" x="279" y="279" width="26" height="26"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="i0C-ru-dNo" secondAttribute="height" multiplier="1:1" id="Caz-i6-IDr"/>
+                            <constraint firstAttribute="width" constant="26" id="lmm-cp-0xE"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -112,8 +132,14 @@
                 <constraint firstAttribute="trailing" secondItem="kr0-4N-B2a" secondAttribute="trailing" constant="10" id="2CQ-HW-3BL"/>
                 <constraint firstItem="3Wd-P4-IlQ" firstAttribute="leading" secondItem="lzm-yk-IEX" secondAttribute="leading" constant="5" id="54j-l5-q98"/>
                 <constraint firstItem="3Wd-P4-IlQ" firstAttribute="top" secondItem="lzm-yk-IEX" secondAttribute="top" constant="5" id="7VL-dB-iAR"/>
+                <constraint firstAttribute="trailing" secondItem="i0C-ru-dNo" secondAttribute="trailing" id="9js-5x-Gyp"/>
                 <constraint firstAttribute="bottom" secondItem="kr0-4N-B2a" secondAttribute="bottom" constant="10" id="C2C-7E-qxB"/>
+                <constraint firstItem="ZAy-Ku-yQo" firstAttribute="top" secondItem="lzm-yk-IEX" secondAttribute="top" id="EUU-n3-3qX"/>
+                <constraint firstAttribute="bottom" secondItem="i0C-ru-dNo" secondAttribute="bottom" id="Peq-Fc-D1p"/>
                 <constraint firstItem="LzZ-8a-mvt" firstAttribute="top" secondItem="lzm-yk-IEX" secondAttribute="top" id="RCg-bx-ztr"/>
+                <constraint firstAttribute="trailing" secondItem="ZAy-Ku-yQo" secondAttribute="trailing" id="Ruh-Z2-qIq"/>
+                <constraint firstAttribute="bottom" secondItem="ZAy-Ku-yQo" secondAttribute="bottom" id="ShP-pB-eVs"/>
+                <constraint firstItem="ZAy-Ku-yQo" firstAttribute="leading" secondItem="lzm-yk-IEX" secondAttribute="leading" id="ebv-xo-6F1"/>
                 <constraint firstAttribute="trailing" secondItem="3Wd-P4-IlQ" secondAttribute="trailing" constant="5" id="xP5-ta-yHZ"/>
                 <constraint firstItem="LzZ-8a-mvt" firstAttribute="leading" secondItem="lzm-yk-IEX" secondAttribute="leading" id="xRH-JG-xHZ"/>
                 <constraint firstItem="kr0-4N-B2a" firstAttribute="leading" secondItem="lzm-yk-IEX" secondAttribute="leading" constant="10" id="yo1-dx-x34"/>
@@ -121,6 +147,8 @@
             <size key="customSize" width="305" height="305"/>
             <connections>
                 <outlet property="bgImageView" destination="3Wd-P4-IlQ" id="emB-M7-JAQ"/>
+                <outlet property="checkView" destination="i0C-ru-dNo" id="wuI-ZA-vy1"/>
+                <outlet property="cover" destination="ZAy-Ku-yQo" id="WTb-4z-b7i"/>
                 <outlet property="currentPriceLabel" destination="IYw-6g-NvA" id="t62-8U-I1R"/>
                 <outlet property="dealNewView" destination="LzZ-8a-mvt" id="z62-m7-rZo"/>
                 <outlet property="descLabel" destination="hqu-LM-H26" id="ZlI-da-AYO"/>
@@ -132,6 +160,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ic_choosed" width="26" height="26"/>
         <image name="ic_deal_new" width="38" height="24"/>
         <image name="placeholder_deal" width="273" height="172"/>
     </resources>
